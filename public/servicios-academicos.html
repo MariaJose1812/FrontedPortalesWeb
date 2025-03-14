@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Estudio - Ingeniería en Ciencias de la Computación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background: linear-gradient(
+            to bottom right, 
+            white 0%, white 33.3%,  
+            #002A80 33.3%, #002A80 66.6%,  
+            #FFB617 66.6%, #FFB617 100%  
+             );
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2); 
+            z-index: -1;
+        }
+
+        .header {
+            margin-top: 20px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 50px;
+            Text-shadow: 10px 10px 35px rgba(0, 0, 0, 1); 
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .header h2 {
+            font-size: 25px;
+            color: #ffffff;
+            margin-bottom: 50px;
+        }
+
+        .header .labels {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .header .labels span {
+            margin: 0 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1200px;
+            align-items: flex-start; 
+            gap: 30px;
+            padding-bottom: 50px; 
+        }
+
+.period {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 20px;
+}
+
+.period-number {
+    font-size: 48px;
+    font-weight: bold;
+    background-color: #FFB800;
+    padding: 15px 25px;
+    border-radius: 10px;
+    color: white;
+    margin-left: 50px;
+    width: 90px; 
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 15px;
+    align-items: flex-start;
+    margin-left: 50px;
+}
+
+
+        /* Cards de las clases */
+        .card {
+            width: 150px;
+            height: 90px;
+            background-color: #f0f0f0;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .card-title {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+
+        .card-name {
+            font-size: 14px;
+            font-weight: normal;
+            color: #333;
+            margin-top: 8px;
+        }
+
+        /* Ajustes de diseño responsivo */
+        @media (max-width: 768px) {
+            .period {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .period-number {
+                font-size: 36px;
+                padding: 8px 15px;
+            }
+
+            .card {
+                width: 120px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .period-number {
+                font-size: 28px;
+                padding: 5px 10px;
+            }
+
+            .card {
+                width: 100px;
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Título y Labels -->
+    <div class="header">
+        <h1>Ingeniería en Ciencias de la Computación</h1>
+        <h2>Plan de Estudio</h2>
+
+
+    </div>
+
+    <!-- Contenedor de las cards -->
+    <div class="container">
+        <!-- Periodo I -->
+        <div class="period">
+            <div class="period-number">I</div>
+            <div class="cards">
+                <div class="card"><div class="card-title">IF2</div><div class="card-name class1">Clase 1</div></div>
+                <div class="card"><div class="card-title">IF3</div><div class="card-name class2">Clase 2</div></div>
+                <div class="card"><div class="card-title">IF4</div><div class="card-name class3">Clase 3</div></div>
+                <div class="card"><div class="card-title">IF5</div><div class="card-name class4">Clase 4</div></div>
+                <div class="card"><div class="card-title">IF6</div><div class="card-name class5">Clase 5</div></div>
+            </div>
+        </div>
+
+        <!-- Periodo II -->
+        <div class="period">
+            <div class="period-number">II</div>
+            <div class="cards">
+                <div class="card"><div class="card-title">IF7</div><div class="card-name class6">Clase 6</div></div>
+                <div class="card"><div class="card-title">IF8</div><div class="card-name class7">Clase 7</div></div>
+                <div class="card"><div class="card-title">IF9</div><div class="card-name class8">Clase 8</div></div>
+                <div class="card"><div class="card-title">IF10</div><div class="card-name class9">Clase 9</div></div>
+                <div class="card"><div class="card-title">IF11</div><div class="card-name class10">Clase 10</div></div>
+            </div>
+        </div>
+
+        <!-- Periodo III -->
+        <div class="period">
+            <div class="period-number">III</div>
+            <div class="cards">
+                <div class="card"><div class="card-title">IF12</div><div class="card-name class11">Clase 11</div></div>
+                <div class="card"><div class="card-title">IF13</div><div class="card-name class12">Clase 12</div></div>
+                <div class="card"><div class="card-title">IF14</div><div class="card-name class13">Clase 13</div></div>
+                <div class="card"><div class="card-title">IF15</div><div class="card-name class14">Clase 14</div></div>
+                <div class="card"><div class="card-title">IF16</div><div class="card-name class15">Clase 15</div></div>
+            </div>
+        </div>
+
+        <!-- Periodo IV -->
+        <div class="period">
+            <div class="period-number">IV</div>
+            <div class="cards">
+                <div class="card"><div class="card-title">IF17</div><div class="card-name class16">Clase 16</div></div>
+                <div class="card"><div class="card-title">IF18</div><div class="card-name class17">Clase 17</div></div>
+                <div class="card"><div class="card-title">IF19</div><div class="card-name class18">Clase 18</div></div>
+                <div class="card"><div class="card-title">IF20</div><div class="card-name class19">Clase 19</div></div>
+                <div class="card"><div class="card-title">IF21</div><div class="card-name class20">Clase 20</div></div>
+            </div>
+        </div>
+
+        <!-- Periodo V -->
+        <div class="period">
+            <div class="period-number">V</div>
+            <div class="cards">
+                <div class="card"><div class="card-title">IF22</div><div class="card-name class21">Clase 21</div></div>
+                <div class="card"><div class="card-title">IF23</div><div class="card-name class22">Clase 22</div></div>
+                <div class="card"><div class="card-title">IF24</div><div class="card-name class23">Clase 23</div></div>
+                <div class="card"><div class="card-title">IF25</div><div class="card-name class24">Clase 24</div></div>
+                <div class="card"><div class="card-title">IF26</div><div class="card-name class25">Clase 25</div></div>
+            </div>
+        </div>
+
+       
