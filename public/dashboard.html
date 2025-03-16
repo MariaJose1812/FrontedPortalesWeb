@@ -4,169 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla con Barra de Navegación</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <style>
     
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome para iconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
+    <style>
         body {
             background-color: #f4f4f4;
-            text-align: center;
         }
-
-      
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             background-color: #003da5;
-            padding: 15px 30px;
-            color: white;
         }
-
-        .navbar img {
-            height: 50px; 
+        .navbar-brand img {
+            height: 50px;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
+        .nav-link {
+            color: white !important;
         }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 8px 12px;
-            transition: background 0.3s;
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
         }
-
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        main {
-            padding: 40px 20px;
-        }
-
-        h1 {
-            color: #003da5;
-            margin-bottom: 10px;
-        }
-
-        p {
-            color: #666;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-       
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-  
-        .button {
-            background: #0047BB;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
+        .card {
+            text-align: center;
             cursor: pointer;
             transition: 0.3s;
         }
-
-        .button.green {
-            background: #127A3F;
-        }
-
-        .button i {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .button:hover {
+        .card:hover {
             opacity: 0.8;
         }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .nav-links {
-                margin-top: 10px;
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-            }
-
-            .nav-links a {
-                width: 100%;
-                text-align: left;
-            }
+        .btn-blue {
+            background: #0047BB;
+            color: white;
+        }
+        .btn-green {
+            background: #127A3F;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <img src="logo.png" alt="Logo">
-        <div class="nav-links">
-            <a href="#">Inicio</a>
-            <a href="#">Productos</a>
-            <a href="#">Servicios</a>
-            <a href="#">Contacto</a>
-            <a href="#">Cerrar sesión</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Cerrar sesión</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <main>
-        <h1>Bienvenido</h1>
+    <!-- Contenido Principal -->
+    <main class="container text-center py-5">
+        <h1 class="text-primary">Bienvenido</h1>
         <p>Seleccione el sistema al que desea acceder.</p>
 
-        <div class="grid-container">
-            <div class="button blue">
-                <i class="fas fa-video"></i>
-                <span>Aula Virtual</span>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="card btn-blue p-3">
+                    <i class="fas fa-video fa-3x"></i>
+                    <span>Aula Virtual</span>
+                </div>
             </div>
-            <div class="button blue">
-                <i class="fas fa-book"></i>
-                <span>Bibliotecas</span>
+            <div class="col-md-4">
+                <div class="card btn-blue p-3">
+                    <i class="fas fa-book fa-3x"></i>
+                    <span>Bibliotecas</span>
+                </div>
             </div>
-            <div class="button green">
-                <i class="fas fa-qrcode"></i>
-                <span>Registro 2025 <br> Matrícula</span>
+            <div class="col-md-4">
+                <div class="card btn-green p-3">
+                    <i class="fas fa-qrcode fa-3x"></i>
+                    <span>Registro 2025 <br> Matrícula</span>
+                </div>
             </div>
-            <a href="servicios-academicos.html" class="button blue" id="servicios-academicos">
-                <i class="fas fa-desktop"></i>
-                <span>Servicios Académicos</span>
-            </a>
-            <div class="button blue">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <span>Moodle 2024 (Nuevo)</span>
+            <div class="col-md-4">
+                <a href="servicios-academicos.html" class="card btn-blue p-3">
+                    <i class="fas fa-desktop fa-3x"></i>
+                    <span>Servicios Académicos</span>
+                </a>
             </div>
-            <div class="button blue">
-                <i class="fas fa-chalkboard"></i>
-                <span>Moodle ICB</span>
+            <div class="col-md-4">
+                <div class="card btn-blue p-3">
+                    <i class="fas fa-chalkboard-teacher fa-3x"></i>
+                    <span>Moodle 2024 (Nuevo)</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card btn-blue p-3">
+                    <i class="fas fa-chalkboard fa-3x"></i>
+                    <span>Moodle ICB</span>
+                </div>
             </div>
         </div>
     </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 
 </body>

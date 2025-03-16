@@ -1,21 +1,20 @@
 document.getElementById("login-form").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
-  
-    document.getElementById("login-box").style.display = "none";
+    // Ocultar el formulario de login
+    document.getElementById("login-box").classList.add("d-none");
 
+    // Centrar el logo (si no lo está en el CSS)
+    let logo = document.getElementById("logo");
+    logo.classList.add("position-absolute", "top-50", "start-50", "translate-middle");
 
-    document.getElementById("logo").style.position = "absolute";
-    document.getElementById("logo").style.top = "50%";
-    document.getElementById("logo").style.left = "50%";
-    document.getElementById("logo").style.transform = "translate(-50%, -50%)";
+    // Mostrar el spinner de carga
+    document.getElementById("loading").classList.remove("d-none");
 
-  
-    document.getElementById("loading").style.display = "block";
-
-
+    // Simular la carga y redirigir
     setTimeout(function() {
         window.location.href = "dashboard.html"; 
     }, 5000);
 });
+
 
