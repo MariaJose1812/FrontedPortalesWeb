@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla con Barra de Navegación</title>
     
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- FontAwesome para iconos -->
+    
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <style>
@@ -22,7 +22,7 @@
             height: 50px;
         }
         .nav-link {
-            color: white !important;
+            color: white;
         }
         .nav-link:hover {
             background-color: rgba(255, 255, 255, 0.2);
@@ -32,6 +32,12 @@
             text-align: center;
             cursor: pointer;
             transition: 0.3s;
+            width: 100%;  
+            height: 150px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .card:hover {
             opacity: 0.8;
@@ -44,11 +50,15 @@
             background: #127A3F;
             color: white;
         }
+        .card a {
+            text-decoration: none;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo"></a>
@@ -58,16 +68,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Perfil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Carnet</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Cerrar sesión</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Contenido Principal -->
+
     <main class="container text-center py-5">
         <h1 class="text-primary">Bienvenido</h1>
         <p>Seleccione el sistema al que desea acceder.</p>
@@ -92,9 +101,11 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <a href="servicios-academicos.html" class="card btn-blue p-3">
-                    <i class="fas fa-desktop fa-3x"></i>
-                    <span>Servicios Académicos</span>
+                <a href="servicios-academicos.html">
+                    <div class="card btn-blue p-3">
+                        <i class="fas fa-desktop fa-3x"></i>
+                        <span>Servicios Académicos</span>
+                    </div>
                 </a>
             </div>
             <div class="col-md-4">
@@ -112,7 +123,6 @@
         </div>
     </main>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 
