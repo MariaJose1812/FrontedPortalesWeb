@@ -3,8 +3,6 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import Dashboard from "./dashboard";
 
-
-
 function Login() {
   const navigate = useNavigate();
 
@@ -15,25 +13,37 @@ function Login() {
 
   return (
     <div className="login-container">
-      <div className="login-box">
-        {/* Logo */}
-        <header>
-          <img src="logo.png" alt="Logo UNICAH" className="logo" />
-        </header>
+      
+      <div className="top-bar">
+        <button className="menu-button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          &#9776; {/* Icono de las tres rayas */}
+        </button>
+        <img src="logo.png" alt="Logo UNICAH" className="logo-top-bar" />
+      </div>
 
-        {/* Título */}
-        <h1 className="title">UNIVERSIDAD CATÓLICA DE HONDURAS</h1>
-        <h2 className="subtitle">NUESTRA SEÑORA REINA DE LA PAZ</h2>
+      <div className="login-box">
+        {/* Logo grande */}
+        <img src="logo.png" alt="Logo Grande" className="logo-large" />
 
         {/* Formulario */}
         <form onSubmit={handleLogin}>
           <div className="input-group">
-            <label htmlFor="usuario">Usuario:</label>
-            <input type="text" id="usuario" className="form-control" required />
+            <input 
+              type="text" 
+              id="usuario" 
+              className="form-control" 
+              placeholder="Usuario" 
+              required 
+            />
           </div>
           <div className="input-group">
-            <label htmlFor="password">Contraseña:</label>
-            <input type="password" id="password" className="form-control" required />
+            <input 
+              type="password" 
+              id="password" 
+              className="form-control" 
+              placeholder="Contraseña" 
+              required 
+            />
           </div>
           <button type="submit" className="btn btn-primary w-100">INGRESAR</button>
           <div className="forgot-password">
@@ -41,11 +51,15 @@ function Login() {
           </div>
         </form>
       </div>
+
+      {/* Barra inferior */}
+      <div className="bottom-bar">
+        <p>Universidad Católica de Honduras ® 2025</p>
+      </div>
     </div>
   );
 }
 
-// Configuración de rutas
 function App() {
   return (
     <Router>
@@ -58,3 +72,4 @@ function App() {
 }
 
 export default App;
+
