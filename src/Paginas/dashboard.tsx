@@ -1,12 +1,28 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaChalkboardTeacher, FaBook, FaQrcode, FaDesktop, FaChalkboard, FaVideo } from "react-icons/fa";
 import "./dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Dashboard() {
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+
+  const handleLogoutClick = () => {
+    setShowModal(true);
+  };
+
+  const handleConfirmLogout = () => {
+    localStorage.removeItem('userToken');
+    navigate('/');
+  };
+
+  const handleCancelLogout = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className="app-container">
-      {/* Navbar Superior */}
       <nav className="top-navbar navbar navbar-expand-lg">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
@@ -16,19 +32,19 @@ function Dashboard() {
             <ul className="navbar-nav ms-auto">
               <li className="nav-item"><Link className="nav-link" to="#">Inicio</Link></li>
               <li className="nav-item"><Link className="nav-link" to="#">Perfil</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="#">Cerrar sesión</Link></li>
+              <li className="nav-item">
+                <button className="nav-link btn" onClick={handleLogoutClick}>Cerrar sesión</button>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
 
-      {/* Contenido Principal */}
       <main className="main-content">
         <div className="container-fluid">
           <h1 className="welcome-title">Bienvenido</h1>
           <p className="welcome-subtitle">Seleccione el sistema al que desea acceder</p>
           
-          {/* Fila de Cards - Primera Línea */}
           <div className="horizontal-cards-row">
             <Link to="#" className="horizontal-card btn-blue">
               <FaVideo className="card-icon" />
@@ -46,7 +62,6 @@ function Dashboard() {
             </Link>
           </div>
           
-          {/* Fila de Cards - Segunda Línea */}
           <div className="horizontal-cards-row">
             <Link to="/servicios-academicos" className="horizontal-card btn-blue">
               <FaDesktop className="card-icon" />
@@ -66,12 +81,31 @@ function Dashboard() {
         </div>
       </main>
 
-      {/* Footer Inferior */}
       <footer className="bottom-navbar">
         <div className="container text-center py-2">
           <span className="footer-text">© 2025 Universidad - Todos los derechos reservados</span>
         </div>
       </footer>
+
+      {showModal && (
+        <div className="modal" tabIndex={-1} style={{ display: 'block' }}>
+          <div className="modal-dialog modal-sm">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">¿Estás seguro de que quieres cerrar sesión?</h5>
+                <button type="button" className="btn-close" onClick={handleCancelLogout}></button>
+              </div>
+              <div className="modal-body">
+                <p>Si cierras sesión, tendrás que iniciar sesión nuevamente para acceder a tu cuenta.</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" onClick={handleCancelLogout}>Cancelar</button>
+                <button type="button" className="btn btn-danger" onClick={handleConfirmLogout}>Cerrar sesión</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

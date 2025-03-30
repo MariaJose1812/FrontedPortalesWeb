@@ -202,4 +202,9 @@
     .navbar-logo {
         height: 40px;
     }
+
+    .modal {
+        display: block;
+        z-index: 1050; 
+      }
 }
