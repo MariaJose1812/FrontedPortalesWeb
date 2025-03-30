@@ -1,75 +1,205 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-body {
-    background-color: #f4f4f4;
+/* Estructura Principal */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff; /* Cambiado a blanco */
 }
 
-.navbar {
+/* Navbar Superior */
+.top-navbar {
     background-color: #003da5;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-.navbar-brand img {
+/* Logo de la Barra Superior */
+.navbar-logo {
     height: 50px;
+    width: auto;
 }
 
+/* Enlaces de la barra superior */
 .nav-link {
-    color: white;
+    color: white !important;
+    padding: 0.75rem 1.25rem;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    font-size: 2.1rem;
 }
 
 .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    padding: 0.75rem 1.5rem;
 }
 
-/* Cards */
-.card {
+/* Contenido Principal */
+.main-content {
+    flex: 1;
+    padding: 3rem 2rem;
+    background-color: transparent; /* Ahora es transparente para mostrar el fondo blanco */
+    margin-top: 80px;
+}
+
+/* Títulos */
+.welcome-title {
+    color: #003da5;
+    font-size: 3rem;
+    font-weight: 700;
     text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 100%;
-    height: 150px;
+    margin-bottom: 1rem;
+}
+
+.welcome-subtitle {
+    color: #555;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Filas de Cards Horizontales */
+.horizontal-cards-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding: 0 2rem;
+    flex-wrap: wrap;
+    background-color: transparent; /* Fondo transparente */
+}
+
+.horizontal-card {
+    flex: 1;
+    min-width: 270px;
+    max-width: none;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.card:hover {
-    opacity: 0.8;
-}
-
-.card a {
+    border-radius: 12px;
+    padding: 2rem;
     text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #003da5; /* Color azul de los botones */
+}
+
+.horizontal-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
     color: white;
 }
 
-/* Card Button Colors */
-.btn-blue {
-    background: #0047BB;
+.card-text {
+    font-size: 1.2rem;
+    font-weight: 600;
     color: white;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Botones de colores (estilos se mantienen igual) */
+.btn-blue {
+    background: #0047bb;
+    border: none;
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-blue:hover {
+    background: #003380;
+    transform: scale(1.05);
 }
 
 .btn-green {
-    background: #127A3F;
-    color: white;
+    background: #127a3f;
+    border: none;
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Main Container */
-main.container {
-    padding-top: 2rem;
-    padding-bottom: 3rem;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.btn-green:hover {
+    background: #0e5e2b;
+    transform: scale(1.05);
 }
 
-/* Text */
-.text-primary {
-    color: #003da5;
+/* Footer Inferior */
+.bottom-navbar {
+    background-color: #003da5;
+    padding: rem 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
+.footer-text {
+    color: rgb(12, 12, 12);
+    font-size: 1rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .horizontal-card {
+        min-width: 220px;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .horizontal-cards-row {
+        gap: 1.5rem;
+    }
+
+    .horizontal-card {
+        min-width: 200px;
+        padding: 1.5rem;
+    }
+
+    .card-icon {
+        font-size: 2.5rem;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .horizontal-cards-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .horizontal-card {
+        width: 90%;
+        max-width: none;
+    }
+
+    .welcome-title {
+        font-size: 2.2rem;
+    }
+
+    .navbar-logo {
+        height: 40px;
+    }
+}
