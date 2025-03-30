@@ -1,166 +1,164 @@
-/* Estructura Principal */
+/* Estructura Principal - Fondo completo */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #edeff5; 
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal ajustado */
 .app-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #ffffff; /* Cambiado a blanco */
 }
 
 /* Navbar Superior */
 .top-navbar {
-    background-color: #003da5;
-    padding: 1rem 2rem;
+    background-color: #0044A3;
+    padding: 0.5rem 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 80px; 
     position: fixed;
-    top: 0;
+    top: 0; 
     left: 0;
     z-index: 1000;
 }
 
 /* Logo de la Barra Superior */
 .navbar-logo {
-    height: 50px;
+    height: 60px;
     width: auto;
 }
 
 /* Enlaces de la barra superior */
 .nav-link {
-    color: white !important;
-    padding: 0.75rem 1.25rem;
-    transition: background-color 0.3s ease, padding 0.3s ease;
-    font-size: 2.1rem;
+    color: white;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    text-decoration: none;
 }
 
 .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.2) !important;
-    padding: 0.75rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Contenido Principal */
+/* Contenido Principal - Ahora sin fondo propio */
 .main-content {
     flex: 1;
-    padding: 3rem 2rem;
-    background-color: transparent; /* Ahora es transparente para mostrar el fondo blanco */
-    margin-top: 80px;
+    padding: 5rem 2rem 4rem;
+    margin: 80px; 
+    margin-bottom: 60px; 
 }
 
 /* Títulos */
 .welcome-title {
-    color: #003da5;
-    font-size: 3rem;
+    color: #0044A3;
+    font-size: 2.5rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 1rem;
 }
 
 .welcome-subtitle {
-    color: #555;
-    font-size: 1.2rem;
+    color: #232a3d;
+    font-size: 1.1rem;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
-/* Filas de Cards Horizontales */
+/* Filas de Cards - Ahora sobre el fondo general */
 .horizontal-cards-row {
     display: flex;
-    justify-content: space-around;
-    gap: 2.5rem;
-    margin-bottom: 2.5rem;
-    padding: 0 2rem;
+    justify-content: center; 
+    gap: 5rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
-    background-color: transparent; /* Fondo transparente */
 }
 
+/* Tarjetas/Botones - Más compactas */
 .horizontal-card {
-    flex: 1;
-    min-width: 270px;
-    max-width: none;
-    height: auto;
+    min-width: 350px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1.5rem;
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #003da5; /* Color azul de los botones */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .horizontal-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: white;
+    color: #edeff5;
 }
 
 .card-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: white;
+    color: #edeff5;
     text-align: center;
-    line-height: 1.5;
+
 }
 
-/* Botones de colores (estilos se mantienen igual) */
+/* Botones de colores */
 .btn-blue {
-    background: #0047bb;
-    border: none;
-    font-size: 1.1rem;
-    padding: 12px 24px;
-    border-radius: 30px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    background: #0044A3;
+
 }
 
 .btn-blue:hover {
     background: #003380;
-    transform: scale(1.05);
+    color: #ffffff;
+
 }
 
 .btn-green {
     background: #127a3f;
-    border: none;
-    font-size: 1.1rem;
-    padding: 12px 24px;
-    border-radius: 30px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+
 }
 
 .btn-green:hover {
     background: #0e5e2b;
-    transform: scale(1.05);
+
 }
 
 /* Footer Inferior */
 .bottom-navbar {
-    background-color: #003da5;
-    padding: rem 0;
+    background-color: #0044A3;
+    padding: 1rem;
     width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 1000;
 }
 
 .footer-text {
-    color: rgb(12, 12, 12);
-    font-size: 1rem;
+    color: #edeff5; 
+    font-size: 0.9rem;
     text-align: center;
-    letter-spacing: 0.5px;
+
 }
 
 /* Responsive Design */
 @media (max-width: 992px) {
     .horizontal-card {
-        min-width: 220px;
-        height: auto;
+        min-width: 200px;
     }
 }
 
@@ -168,18 +166,15 @@
     .horizontal-cards-row {
         gap: 1.5rem;
     }
-
+    
     .horizontal-card {
-        min-width: 200px;
-        padding: 1.5rem;
+        min-width: 180px;
+        height: 160px;
+        padding: 1rem;
     }
-
-    .card-icon {
-        font-size: 2.5rem;
-    }
-
-    .card-text {
-        font-size: 1.1rem;
+    
+    .welcome-title {
+        font-size: 2rem;
     }
 }
 
@@ -189,22 +184,17 @@
         align-items: center;
         gap: 1rem;
     }
-
+    
     .horizontal-card {
-        width: 90%;
-        max-width: none;
+        width: 100%;
+        max-width: 300px;
     }
-
-    .welcome-title {
-        font-size: 2.2rem;
-    }
-
+    
     .navbar-logo {
-        height: 40px;
+        height: 50px;
     }
-
-    .modal {
-        display: block;
-        z-index: 1050; 
-      }
+    
+    .nav-link {
+        font-size: 1rem;
+    }
 }
