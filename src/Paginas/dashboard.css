@@ -2,16 +2,17 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #edeff5; 
+    background-color: #edeff5;
     font-family: Arial, sans-serif;
-}
 
-/* Contenedor principal ajustado */
-.app-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    
+    /* Espacio para la bottom-navbar (ajustar según necesidades) */
+    padding-bottom: 4rem; /* Aprox. altura de la navbar */
 }
+
 
 /* Navbar Superior */
 .top-navbar {
@@ -142,10 +143,10 @@ body {
     background-color: #0044A3;
     padding: 1rem;
     width: 100%;
-    position: fixed;
+    z-index: 1000;
     bottom: 0;
     left: 0;
-    z-index: 1000;
+
 }
 
 .footer-text {
