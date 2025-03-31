@@ -92,7 +92,7 @@ function Dashboard() {
           {/* Mostrar los datos del alumno */}
           {user && (
             <div className="user-info">
-              <p className="user-label">UserDNI_SA: {user.alumnoId}</p>
+              <p className="user-label">Usuario: {user.alumnoId}</p>
               <p className="user-label">Nombre: {user.nombre}</p>
             </div>
           )}
@@ -108,18 +108,17 @@ function Dashboard() {
               <span className="card-text">Bibliotecas</span>
             </Link>
 
-            {/* Enlace que ejecuta la función para la navegación condicional */}
-            <button className="horizontal-card btn-green" onClick={handleServiciosAcademicosClick}>
-              <FaQrcode className="card-icon" />
-              <span className="card-text">Servicios Académicos</span>
-            </button>
-          </div>
-
-          <div className="horizontal-cards-row">
-            <Link to="#" className="horizontal-card btn-blue">
+            <div className="horizontal-cards-row">
+            <Link to="#" className="horizontal-card btn-green">
               <FaDesktop className="card-icon" />
-              <span className="card-text">Servicios Académicos</span>
+              <span className="card-text">Registro Matricula</span>
             </Link>
+
+           <button className="horizontal-card btn-blue" onClick={handleServiciosAcademicosClick}>
+             <FaQrcode className="card-icon" />
+             <span className="card-text">Servicios Academicos</span>
+           </button>
+          </div>
 
             <Link to="#" className="horizontal-card btn-blue">
               <FaChalkboardTeacher className="card-icon" />

@@ -10,7 +10,7 @@ body {
     min-height: 100vh;
     
     /* Espacio para la bottom-navbar (ajustar según necesidades) */
-    padding-bottom: 4rem; /* Aprox. altura de la navbar */
+    padding-bottom: 2rem; /* Aprox. altura de la navbar */
 }
 
 
@@ -53,7 +53,7 @@ body {
 .main-content {
     flex: 1;
     padding: 5rem 2rem 4rem;
-    margin: 80px; 
+    margin-top: 80px; 
     margin-bottom: 60px; 
 }
 
@@ -146,6 +146,7 @@ body {
     z-index: 1000;
     bottom: 0;
     left: 0;
+    height: 60px;
 
 }
 
