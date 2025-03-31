@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-route
 import axios from 'axios';
 import Dashboard from "./dashboard";
 import ServiciosAcademicos from "./servicios-academicos";
+import ICienciasComputacionPensum from "../Pensums/ICienciasComputaciónPensum";
+import IndustrialPensum from "../Pensums/IndustrialPensum";
 import { useState } from "react";
 
 // Definir la interfaz LoginResponse
@@ -36,7 +38,9 @@ function Login() {
 
       // Si la autenticación es exitosa, redirigir al dashboard
       if (response.status === 200) {
-        localStorage.setItem('userToken', response.data.token); // Almacenar el token si es necesario
+        // Almacenar el token y el userId en el localStorage
+        localStorage.setItem('userToken', response.data.token);
+        localStorage.setItem('userId', userId);  // Guardamos el userId
         navigate("/dashboard");
       }
     } catch (error: any) {
@@ -107,6 +111,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/servicios-academicos" element={<ServiciosAcademicos />} />
+        <Route path="/ICienciasComputacionPensum" element={<ICienciasComputacionPensum />} />
+        <Route path="/IndustrialPensum" element={<IndustrialPensum />} />
       </Routes>
     </Router>
   );

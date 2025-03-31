@@ -2,11 +2,40 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { FaChalkboardTeacher, FaBook, FaQrcode, FaDesktop, FaChalkboard, FaVideo } from "react-icons/fa";
 import "./dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from 'axios';
 
 function Dashboard() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState<any>(null); // Para guardar la información del usuario
+  const [facultadId, setFacultadId] = useState<string>(""); // Para almacenar el facultadId
+
+  // Obtener el userId desde localStorage
+  const userId = localStorage.getItem('userId') || 'Usuario desconocido'; 
+
+  useEffect(() => {
+    // Llamar a la API para obtener los datos del alumno
+    const fetchAlumnoData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3010/api/alumno/getAlumno`);
+        const alumno = response.data.result.find((alumno: any) => alumno.alumnoId === userId);
+
+        if (alumno) {
+          setUser(alumno);
+          setFacultadId(alumno.facultadId);  // Guardar el facultadId del alumno
+        } else {
+          console.error('Alumno no encontrado');
+        }
+      } catch (error) {
+        console.error('Error al obtener los datos del alumno:', error);
+      }
+    };
+
+    if (userId !== 'Usuario desconocido') {
+      fetchAlumnoData();
+    }
+  }, [userId]);
 
   const handleLogoutClick = () => {
     setShowModal(true);
@@ -14,12 +43,27 @@ function Dashboard() {
 
   const handleConfirmLogout = () => {
     localStorage.removeItem('userToken');
+    localStorage.removeItem('userId'); // Eliminar el userId al cerrar sesión
     navigate('/');
   };
 
   const handleCancelLogout = () => {
     setShowModal(false);
   };
+
+  const handleServiciosAcademicosClick = () => {
+    console.log("FacultadId:", facultadId); // Verifica si el valor es correcto
+    if (facultadId === 'IF01002') {
+      console.log('Redirigiendo a /ICienciasComputacionPensum');
+      navigate('/ICienciasComputacionPensum');
+    } else if (facultadId === 'IG02002') {
+      console.log('Redirigiendo a /IndustrialPensum');
+      navigate('/IndustrialPensum');
+    } else {
+      console.log('Facultad no reconocida');
+    }
+  };
+  
 
   return (
     <div className="app-container">
@@ -44,35 +88,44 @@ function Dashboard() {
         <div className="container-fluid">
           <h1 className="welcome-title">Bienvenido</h1>
           <p className="welcome-subtitle">Seleccione el sistema al que desea acceder</p>
-          
+
+          {/* Mostrar los datos del alumno */}
+          {user && (
+            <div className="user-info">
+              <p className="user-label">UserDNI_SA: {user.alumnoId}</p>
+              <p className="user-label">Nombre: {user.nombre}</p>
+            </div>
+          )}
+
           <div className="horizontal-cards-row">
             <Link to="#" className="horizontal-card btn-blue">
               <FaVideo className="card-icon" />
               <span className="card-text">Aula Virtual</span>
             </Link>
-            
+
             <Link to="#" className="horizontal-card btn-blue">
               <FaBook className="card-icon" />
               <span className="card-text">Bibliotecas</span>
             </Link>
-            
-            <Link to="#" className="horizontal-card btn-green">
+
+            {/* Enlace que ejecuta la función para la navegación condicional */}
+            <button className="horizontal-card btn-green" onClick={handleServiciosAcademicosClick}>
               <FaQrcode className="card-icon" />
-              <span className="card-text">Registro 2025 Matrícula</span>
-            </Link>
+              <span className="card-text">Servicios Académicos</span>
+            </button>
           </div>
-          
+
           <div className="horizontal-cards-row">
-            <Link to="/servicios-academicos" className="horizontal-card btn-blue">
+            <Link to="#" className="horizontal-card btn-blue">
               <FaDesktop className="card-icon" />
               <span className="card-text">Servicios Académicos</span>
             </Link>
-            
+
             <Link to="#" className="horizontal-card btn-blue">
               <FaChalkboardTeacher className="card-icon" />
               <span className="card-text">Moodle 2024 (Nuevo)</span>
             </Link>
-            
+
             <Link to="#" className="horizontal-card btn-blue">
               <FaChalkboard className="card-icon" />
               <span className="card-text">Moodle ICB</span>
@@ -111,3 +164,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
