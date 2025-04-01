@@ -85,7 +85,7 @@
 }
 
 .card-title {
-  background-color: #F2A900;
+  background-color: #F2A900 !important;
   color: white;
   font-weight: bold;
   padding: 5px;
