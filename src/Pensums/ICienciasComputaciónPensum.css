@@ -84,12 +84,8 @@
   cursor: pointer;
 }
 
-.card-title {
-  background-color: #F2A900 !important;
-  color: white;
-  font-weight: bold;
-  padding: 5px;
-  border-radius: 5px 5px 0 0;
+.pending-course {
+  background-color: green !important; 
 }
 
 .card-name {

@@ -206,7 +206,7 @@
     margin-bottom: 1rem;
   }
   
-  .card-title {
+  .dashboard-card .title {
     background: none !important;
     color: inherit !important;
     padding: 0;
@@ -216,7 +216,7 @@
   
   /* Footer */
   .dashboard-footer {
-    background-color: var(--dark-gray);
+    background-color: var(--primary-blue);
     color: var(--white);
     padding: 1.5rem 0;
     text-align: center;

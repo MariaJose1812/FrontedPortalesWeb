@@ -560,11 +560,13 @@ const ICienciasComputaciónPensum: React.FC = () => {
                   style={{ cursor: 'pointer' }}
                 >
                   <div
-                    className="card-title"
+                    className={`card-title ${pendingCourses.has(course.code) ? 'pending-course' : ''}`}
                     style={{
-                      backgroundColor: pendingCourses.has(course.code) ? 'green' : undefined,
-                      color: 'white',
-                      padding: '10px',
+                      backgroundColor: "#F2A900", 
+                      color: "white",
+                      fontWeight: "bold",
+                      padding: "10px",
+                      textAlign: "center"
                     }}
                   >
                     {course.code}
