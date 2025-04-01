@@ -1,5 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaChalkboardTeacher, FaBook, FaQrcode, FaDesktop, FaChalkboard, FaVideo } from "react-icons/fa";
+import { 
+  FaChalkboardTeacher, 
+  FaBook, 
+  FaQrcode, 
+  FaDesktop, 
+  FaChalkboard, 
+  FaVideo,
+  FaUser,
+  FaHome
+} from "react-icons/fa";
 import "./dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -8,14 +17,14 @@ import axios from 'axios';
 function Dashboard() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const [user, setUser] = useState<any>(null); // Para guardar la información del usuario
-  const [facultadId, setFacultadId] = useState<string>(""); // Para almacenar el facultadId
+  const [user, setUser] = useState<any>(null);
+  const [facultadId, setFacultadId] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Obtener el userId desde localStorage
-  const userId = localStorage.getItem('userId') || 'Usuario desconocido'; 
+  const userId = localStorage.getItem('userId') || '';
 
   useEffect(() => {
-    // Llamar a la API para obtener los datos del alumno
     const fetchAlumnoData = async () => {
       try {
         const response = await axios.get(`http://localhost:3010/api/alumno/getAlumno`);
@@ -23,136 +32,174 @@ function Dashboard() {
 
         if (alumno) {
           setUser(alumno);
-          setFacultadId(alumno.facultadId);  // Guardar el facultadId del alumno
+          setFacultadId(alumno.facultadId);
         } else {
-          console.error('Alumno no encontrado');
+          setError('Alumno no encontrado');
         }
       } catch (error) {
-        console.error('Error al obtener los datos del alumno:', error);
+        console.error('Error:', error);
+        setError('Error al cargar los datos');
+      } finally {
+        setLoading(false);
       }
     };
 
-    if (userId !== 'Usuario desconocido') {
+    if (userId) {
       fetchAlumnoData();
+    } else {
+      setLoading(false);
     }
   }, [userId]);
 
-  const handleLogoutClick = () => {
-    setShowModal(true);
-  };
+  const handleLogoutClick = () => setShowModal(true);
+  const handleCancelLogout = () => setShowModal(false);
 
   const handleConfirmLogout = () => {
     localStorage.removeItem('userToken');
-    localStorage.removeItem('userId'); // Eliminar el userId al cerrar sesión
+    localStorage.removeItem('userId');
     navigate('/');
   };
 
-  const handleCancelLogout = () => {
-    setShowModal(false);
-  };
-
   const handleServiciosAcademicosClick = () => {
-    console.log("FacultadId:", facultadId); // Verifica si el valor es correcto
     if (facultadId === 'IF01002') {
-      console.log('Redirigiendo a /ICienciasComputacionPensum');
       navigate('/ICienciasComputacionPensum');
     } else if (facultadId === 'IG02002') {
-      console.log('Redirigiendo a /IndustrialPensum');
       navigate('/IndustrialPensum');
-    } else {
-      console.log('Facultad no reconocida');
     }
   };
-  
+
+  if (loading) return <div className="loading-spinner">Cargando...</div>;
+  if (error) return <div className="error-message">{error}</div>;
 
   return (
-    <div className="app-container">
-      <nav className="top-navbar navbar navbar-expand-lg">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img src="logo.png" alt="Logo" className="navbar-logo" />
-          </a>
-          <div className="navbar-collapse">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item"><Link className="nav-link" to="#">Inicio</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="#">Perfil</Link></li>
+    <div className="dashboard-container">
+      {/* Navbar Superior */}
+      <header className="dashboard-header">
+        <div className="header-content container-fluid">
+          <div className="brand-container">
+            <img src="logo.png" alt="Universidad Logo" className="header-logo" />
+          </div>
+          
+          <nav className="header-nav">
+            <ul className="nav-list">
               <li className="nav-item">
-                <button className="nav-link btn" onClick={handleLogoutClick}>Cerrar sesión</button>
+                <Link to="#" className="nav-link">
+                  <FaHome className="nav-icon" />
+                  <span>Inicio</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="#" className="nav-link">
+                  <FaUser className="nav-icon" />
+                  <span>Perfil</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <button className="logout-btn" onClick={handleLogoutClick}>
+                  Cerrar sesión
+                </button>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
-      </nav>
+      </header>
 
-      <main className="main-content">
+      {/* Contenido Principal */}
+      <main className="dashboard-main">
         <div className="container-fluid">
-          <h1 className="welcome-title">Bienvenido</h1>
-          <p className="welcome-subtitle">Seleccione el sistema al que desea acceder</p>
-
-          {/* Mostrar los datos del alumno */}
-          {user && (
-            <div className="user-info">
-              <p className="user-label">Usuario: {user.alumnoId}</p>
-              <p className="user-label">Nombre: {user.nombre}</p>
-            </div>
-          )}
-
-          <div className="horizontal-cards-row">
-            <Link to="#" className="horizontal-card btn-blue">
-              <FaVideo className="card-icon" />
-              <span className="card-text">Aula Virtual</span>
-            </Link>
-
-            <Link to="#" className="horizontal-card btn-blue">
-              <FaBook className="card-icon" />
-              <span className="card-text">Bibliotecas</span>
-            </Link>
-
-            <div className="horizontal-cards-row">
-            <Link to="#" className="horizontal-card btn-green">
-              <FaDesktop className="card-icon" />
-              <span className="card-text">Registro Matricula</span>
-            </Link>
-
-           <button className="horizontal-card btn-blue" onClick={handleServiciosAcademicosClick}>
-             <FaQrcode className="card-icon" />
-             <span className="card-text">Servicios Academicos</span>
-           </button>
+          <div className="welcome-section">
+            <h1 className="welcome-title">Bienvenido, {user?.nombre || 'Estudiante'}</h1>
+            <p className="welcome-subtitle">Selecciona el servicio que necesitas</p>
+            
+            {user && (
+              <div className="user-badge">
+                <span className="badge-item">ID: {user.alumnoId}</span>
+                <span className="badge-item">Facultad: {facultadId}</span>
+              </div>
+            )}
           </div>
 
-            <Link to="#" className="horizontal-card btn-blue">
-              <FaChalkboardTeacher className="card-icon" />
-              <span className="card-text">Moodle 2024 (Nuevo)</span>
-            </Link>
+          {/* Primera fila de 3 servicios */}
+          <div className="services-row">
+            <ServiceCard 
+              icon={<FaVideo />} 
+              title="Aula Virtual" 
+              color="blue" 
+              to="#" 
+            />
+            
+            <ServiceCard 
+              icon={<FaBook />} 
+              title="Bibliotecas" 
+              color="blue" 
+              to="#" 
+            />
+            
+            <ServiceCard 
+              icon={<FaDesktop />} 
+              title="Registro Matrícula" 
+              color="green" 
+              to="#" 
+            />
+          </div>
 
-            <Link to="#" className="horizontal-card btn-blue">
-              <FaChalkboard className="card-icon" />
-              <span className="card-text">Moodle ICB</span>
-            </Link>
+          {/* Segunda fila de 3 servicios */}
+          <div className="services-row">
+            <ServiceCard 
+              icon={<FaQrcode />} 
+              title="Servicios Académicos" 
+              color="blue" 
+              onClick={handleServiciosAcademicosClick}
+            />
+            
+            <ServiceCard 
+              icon={<FaChalkboardTeacher />} 
+              title="Moodle 2024" 
+              color="blue" 
+              to="#" 
+            />
+            
+            <ServiceCard 
+              icon={<FaChalkboard />} 
+              title="Moodle ICB" 
+              color="blue" 
+              to="#" 
+            />
           </div>
         </div>
       </main>
 
-      <footer className="bottom-navbar">
-        <div className="container text-center py-2">
-          <span className="footer-text">© 2025 Universidad - Todos los derechos reservados</span>
+      {/* Footer */}
+      <footer className="dashboard-footer">
+        <div className="container-fluid">
+          <p className="copyright-text">
+            © {new Date().getFullYear()} Universidad. Todos los derechos reservados.
+          </p>
         </div>
       </footer>
 
+      {/* Modal de Confirmación */}
       {showModal && (
-        <div className="modal" tabIndex={-1} style={{ display: 'block' }}>
-          <div className="modal-dialog modal-sm">
+        <div className="confirmation-modal">
+          <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">¿Estás seguro de que quieres cerrar sesión?</h5>
-                <button type="button" className="btn-close" onClick={handleCancelLogout}></button>
+                <h5 className="modal-title">Confirmar cierre de sesión</h5>
+                <button type="button" className="close-btn" onClick={handleCancelLogout}>
+                  &times;
+                </button>
               </div>
               <div className="modal-body">
-                <p>Si cierras sesión, tendrás que iniciar sesión nuevamente para acceder a tu cuenta.</p>
+                <p>¿Estás seguro de que deseas cerrar tu sesión?</p>
+                <small>Tendrás que iniciar sesión nuevamente para acceder.</small>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={handleCancelLogout}>Cancelar</button>
-                <button type="button" className="btn btn-danger" onClick={handleConfirmLogout}>Cerrar sesión</button>
+                <button className="cancel-btn" onClick={handleCancelLogout}>
+                  Cancelar
+                </button>
+                <button className="confirm-btn" onClick={handleConfirmLogout}>
+                  Cerrar sesión
+                </button>
               </div>
             </div>
           </div>
@@ -162,5 +209,31 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+// Componente ServiceCard (sin cambios)
+function ServiceCard({ icon, title, color, to, onClick }: {
+  icon: React.ReactNode;
+  title: string;
+  color: 'blue' | 'green';
+  to?: string;
+  onClick?: () => void;
+}) {
+  const className = `service-card ${color}-card`;
+  
+  if (to) {
+    return (
+      <Link to={to} className={className}>
+        <div className="card-icon">{icon}</div>
+        <h3 className="card-title">{title}</h3>
+      </Link>
+    );
+  }
+  
+  return (
+    <button className={className} onClick={onClick}>
+      <div className="card-icon">{icon}</div>
+      <h3 className="card-title">{title}</h3>
+    </button>
+  );
+}
 
+export default Dashboard;
