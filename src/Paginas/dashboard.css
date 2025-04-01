@@ -1,8 +1,8 @@
 :root {
     /* Colores principales */
-    --primary-blue: #1a73e8;
+    --primary-blue: hsl(211, 100%, 50%);
     --primary-green: #34a853;
-    --dark-blue: #0d47a1;
+    --dark-blue: #5c7292;
     --light-gray: #f8f9fa;
     --medium-gray: #e9ecef;
     --dark-gray: #495057;
@@ -42,7 +42,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 12000px;
     margin: 0 auto;
     padding: 0 1rem;
   }
@@ -124,7 +124,7 @@
   }
   
   .welcome-title {
-    color: var(--black);
+    color: var(--primary-blue);
     font-size: 2rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
