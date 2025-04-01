@@ -1,7 +1,9 @@
 :root {
     /* Colores principales */
     --primary-blue: #0044A3;
-    --primary-green: #34a853;
+    --hover-blue:#001a80;
+    --primary-green: #39b45a;
+    --hover-green: #2c7a29;
     --dark-blue: #5c7292;
     --light-gray: #f8f9fa;
     --medium-gray: #e9ecef;
@@ -180,8 +182,14 @@
   
   .service-card:hover {
     transform: translateY(-5px);
+    background-color: var(--hover-blue);
     box-shadow: var(--shadow-lg);
+    color: var(--medium-gray);
   }
+
+  .green-card:hover {
+    background-color: var(--hover-green) !important;
+}
   
   .blue-card {
     background-color: var(--primary-blue);
