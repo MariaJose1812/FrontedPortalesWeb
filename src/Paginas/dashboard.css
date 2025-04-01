@@ -1,6 +1,6 @@
 :root {
     /* Colores principales */
-    --primary-blue: hsl(211, 100%, 50%);
+    --primary-blue: #0044A3;
     --primary-green: #34a853;
     --dark-blue: #5c7292;
     --light-gray: #f8f9fa;
@@ -30,7 +30,7 @@
   
   /* Header */
   .dashboard-header {
-    background-color: var(--white);
+    background-color: var(--primary-blue);
     box-shadow: var(--shadow-sm);
     padding: 1rem 0;
     position: sticky;
@@ -199,11 +199,12 @@
   }
   
   .card-title {
-    font-size: 1.2rem;
-    font-weight: 500;
+    background: none !important;
+    color: inherit !important;
+    padding: 0;
     margin: 0;
-    text-align: center;
-  }
+}
+
   
   /* Footer */
   .dashboard-footer {
