@@ -9,44 +9,39 @@ import IndustrialPensum from "../Pensums/IndustrialPensum";
 import { useState } from "react";
 import Aprobadas from "./Aprobadas";
 
-
-
 interface LoginResponse {
   message: string;
   userId: string;
-  RoleId: number;
+  RoleId: number | null;
   token: string;
 }
 
 function Login() {
   const navigate = useNavigate();
-
- 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    
     const userId = (document.getElementById('usuario') as HTMLInputElement).value;
     const password = (document.getElementById('password') as HTMLInputElement).value;
 
     try {
-      
       const response = await axios.post<LoginResponse>('http://localhost:3010/api/User/signIn', {
         userId,
         password,
       });
 
-      
       if (response.status === 200) {
         
         localStorage.setItem('userToken', response.data.token);
-        localStorage.setItem('userId', userId);  
+        localStorage.setItem('userId', userId);
+
+        localStorage.setItem('RoleId', response.data.RoleId ? response.data.RoleId.toString() : 'null');
+
         navigate("/dashboard");
       }
     } catch (error: any) {
-      
       console.error('Error en el inicio de sesión', error);
       setErrorMessage('Usuario o contraseña incorrectos');
     }
@@ -56,7 +51,7 @@ function Login() {
     <div className="login-container">
       <div className="top-bar">
         <button className="menu-button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          &#9776; {/* Icono de las tres rayas */}
+          &#9776;
         </button>
         <img src="logo.png" alt="Logo UNICAH" className="logo-top-bar" />
       </div>
@@ -64,14 +59,12 @@ function Login() {
       <div className="login-box">
         <img src="logo.png" alt="Logo Grande" className="logo-large" />
 
-        {/* Mostrar mensaje de error si existe */}
         {errorMessage && (
           <div className="alert alert-danger" role="alert">
             {errorMessage}
           </div>
         )}
 
-        {/* Formulario */}
         <form onSubmit={handleLogin}>
           <div className="input-group">
             <input 
@@ -98,7 +91,6 @@ function Login() {
         </form>
       </div>
 
-      {/* Barra inferior */}
       <div className="bottom-bar">
         <p>Universidad Católica de Honduras ® 2025</p>
       </div>
@@ -116,7 +108,6 @@ function App() {
         <Route path="/ICienciasComputacionPensum" element={<ICienciasComputacionPensum />} />
         <Route path="/IndustrialPensum" element={<IndustrialPensum />} />
         <Route path="/Aprobadas" element={<Aprobadas />} />
-        
       </Routes>
     </Router>
   );

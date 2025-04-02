@@ -1,20 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { 
-  FaChalkboardTeacher, 
-  FaBook, 
-  FaQrcode, 
-  FaDesktop, 
-  FaChalkboard, 
-  FaVideo,
-  FaUser,
-  FaHome
-} from "react-icons/fa";
+import { FaChalkboardTeacher, FaBook, FaQrcode, FaDesktop, FaChalkboard, FaVideo, FaUser, FaHome } from "react-icons/fa";
 import "./dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
-
-
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -25,6 +14,8 @@ function Dashboard() {
   const [error, setError] = useState<string | null>(null);
 
   const userId = localStorage.getItem('userId') || '';
+  const RoleId = localStorage.getItem('RoleId');  
+  const User = "Administrador"; 
 
   useEffect(() => {
     const fetchAlumnoData = async () => {
@@ -36,7 +27,7 @@ function Dashboard() {
           setUser(alumno);
           setFacultadId(alumno.facultadId);
         } else {
-          setError('Alumno no encontrado');
+          setUser(null);
         }
       } catch (error) {
         console.error('Error:', error);
@@ -59,6 +50,7 @@ function Dashboard() {
   const handleConfirmLogout = () => {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userId');
+    localStorage.removeItem('RoleId');
     navigate('/');
   };
 
@@ -70,13 +62,11 @@ function Dashboard() {
     }
   };
 
-  
-
   if (loading) return <div className="loading-spinner">Cargando...</div>;
   if (error) return <div className="error-message">{error}</div>;
 
   const handleAprobadasClick = () => {
-    navigate('/aprobadas', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+    navigate('/aprobadas', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
   };
 
   return (
@@ -112,14 +102,21 @@ function Dashboard() {
         </div>
       </header>
 
+      {/* Mostrar Cargo Administrativo si RoleId es 1 */}
+      {RoleId === '1' && (
+        <div className="cargo-administrativo-label">
+          Cargo Administrativo
+        </div>
+      )}
+
       {/* Contenido Principal */}
       <main className="dashboard-main">
         <div className="container-fluid">
           <div className="welcome-section">
-            <h1 className="welcome-title">Bienvenido, {user?.nombre || 'Estudiante'}</h1>
+            <h1 className="welcome-title">Bienvenido, {RoleId === '1' ? User : user?.nombre || 'Estudiante'}</h1>
             <p className="welcome-subtitle">Selecciona el servicio que necesitas</p>
             
-            {user && (
+            {user && RoleId !== '1' && (
               <div className="user-badge">
                 <span className="badge-item">ID: {user.alumnoId}</span>
                 <span className="badge-item">Facultad: {facultadId}</span>
@@ -127,7 +124,7 @@ function Dashboard() {
             )}
           </div>
 
-          {/* Primera fila de 3 servicios */}
+          {/* Fila de servicios */}
           <div className="services-row">
             <ServiceCard 
               icon={<FaVideo />} 
@@ -135,38 +132,36 @@ function Dashboard() {
               color="blue" 
               to="#" 
             />
-            
             <ServiceCard 
               icon={<FaBook />} 
               title="Bibliotecas" 
               color="blue" 
               to="#" 
             />
-            
             <ServiceCard 
-            icon={<FaDesktop />} 
-            title="Registro Matrícula" 
-            color="green" 
-            onClick={handleAprobadasClick}
-          />
+              icon={<FaDesktop />} 
+              title="Registro Matrícula" 
+              color="green" 
+              onClick={handleAprobadasClick}
+            />
           </div>
 
           {/* Segunda fila de 3 servicios */}
           <div className="services-row">
-            <ServiceCard 
-              icon={<FaQrcode />} 
-              title="Servicios Académicos" 
-              color="blue" 
-              onClick={handleServiciosAcademicosClick}
-            />
-            
+            {RoleId !== '1' && (
+              <ServiceCard 
+                icon={<FaQrcode />} 
+                title="Servicios Académicos" 
+                color="blue" 
+                onClick={handleServiciosAcademicosClick}
+              />
+            )}
             <ServiceCard 
               icon={<FaChalkboardTeacher />} 
               title="Moodle 2024" 
               color="blue" 
               to="#" 
             />
-            
             <ServiceCard 
               icon={<FaChalkboard />} 
               title="Moodle ICB" 
@@ -217,7 +212,6 @@ function Dashboard() {
   );
 }
 
-
 function ServiceCard({ icon, title, color, to, onClick }: {
   icon: React.ReactNode;
   title: string;
@@ -227,16 +221,12 @@ function ServiceCard({ icon, title, color, to, onClick }: {
 }) {
   const className = `service-card ${color}-card`;
   
-  if (to) {
-    return (
-      <Link to={to} className={className}>
-        <div className="card-icon">{icon}</div>
-        <h3 className="card-title">{title}</h3>
-      </Link>
-    );
-  }
-  
-  return (
+  return to ? (
+    <Link to={to} className={className}>
+      <div className="card-icon">{icon}</div>
+      <h3 className="card-title">{title}</h3>
+    </Link>
+  ) : (
     <button className={className} onClick={onClick}>
       <div className="card-icon">{icon}</div>
       <h3 className="card-title">{title}</h3>
