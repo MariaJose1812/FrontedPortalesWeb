@@ -1,298 +1,96 @@
+/* Variables renombradas */
 :root {
   --ucah-primary: #0044a3;
   --ucah-secondary: #0044a3;
   --ucah-accent: #e74c3c;
-  --glass-opacity: 0.2;
-  --glass-blur: 10px;
-  --table-max-height: 65vh;
+  --ucah-glass-opacity: 0.2;
+  --ucah-glass-blur: 10px;
+  --ucah-table-max-height: 65vh;
 }
 
-/* Estructura base - Modificado */
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: #f8f9fa;
-}
-
-.d-flex.flex-column.min-vh-100 {
+/* Encapsulación */
+.ucah-aprobadas {
   background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Barra superior - Modificado */
-.header-bar {
+/* Barra superior */
+.ucah-header-bar {
   background: linear-gradient(135deg, var(--ucah-primary), var(--ucah-secondary));
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   padding: 1rem;
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
-  display: flex;
-  align-items: center;
 }
 
-.header-bar .logo {
+/* Logo */
+.ucah-logo {
   height: 80px;
   transition: transform 0.3s ease;
-  object-fit: contain;
-  margin-right: auto; /* Empuja todo lo demás a la derecha */
 }
 
-@media (max-width: 768px) {
-  .header-bar .logo {
-    height: 50px;
-  }
-}
-
-.header-bar .logo:hover {
+.ucah-logo:hover {
   transform: scale(1.05);
 }
 
-/* Contenedor principal - Modificado */
-.clases-aprobadas-container {
+/* Contenedor principal */
+.ucah-clases-aprobadas-container {
   flex: 1;
-  width: 100%;
-  margin: 0;
   padding: 2rem;
-  animation: fadeInUp 0.5s ease-out;
-  box-sizing: border-box;
 }
 
-.card h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.card p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-@media (min-width: 1600px) {
-  .clases-aprobadas-container {
-    max-width: 1600px;
-    margin: 0 auto;
-  }
-}
-
-.card {
+/* Tarjeta */
+.ucah-card {
   border-radius: 16px;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.98);
+  background-color: white;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-  border: none;
   padding: 2rem;
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: none;
 }
 
-/* Formulario - Campos más grandes */
-.busqueda-container,
-.info-container {
-  margin-bottom: 2rem; /* Más espacio entre campos */
-  text-align: center; /* Centra el contenido del contenedor */
-}
-
-.dni-label,
-.info-label {
+/* Inputs y etiquetas */
+.ucah-dni-label,
+.ucah-info-label {
   font-weight: 600;
-  margin-bottom: 0.75rem; /* Más espacio debajo de las etiquetas */
   color: var(--ucah-primary);
-  font-size: 0.9rem; /* Texto de etiqueta más pequeño */
-  display: block; /* Asegura que ocupe su propia línea */
 }
 
-.dni-input,
-.info-input {
-  border-radius: 10px; /* Bordes más redondeados */
-  padding: 1rem 1.25rem; /* Más relleno interno */
+.ucah-dni-input,
+.ucah-info-input {
+  border-radius: 10px;
   border: 2px solid #e0e3e7;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
-  font-size: 1.1rem; /* Texto más grande */
-  height: 3.5rem; /* Altura fija más grande */
-  max-width: 500px; /* Ancho máximo para el input */
-  margin: 0 auto; /* Centra el input */
-  display: block; /* Necesario para que funcione el margin auto */
+  max-width: 500px;
 }
 
-.dni-input:focus {
-  border-color: var(--ucah-secondary);
-  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.1);
-  outline: none;
-}
-
-.info-input {
-  background-color: #f8f9fa;
-  cursor: not-allowed;
-}
-
-/* Botón - Tamaño normal */
-.buscar-button {
-  background: linear-gradient(135deg, var(--ucah-secondary), var(--ucah-primary));
-  border: none;
+/* Botón */
+.ucah-buscar-button {
+  background: linear-gradient(135deg, var(--ucah-primary), var(--ucah-secondary));
   border-radius: 8px;
-  padding: 0.85rem 2rem; /* Tamaño normal */
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: auto; /* Ancho automático en lugar del 100% */
-  margin: 1.5rem auto; /* Centra el botón */
-  position: relative;
-  overflow: hidden;
+  padding: 0.85rem 2rem;
   color: white;
   text-transform: uppercase;
-  font-size: 1rem;
-  min-width: 200px; /* Ancho mínimo */
-  display: block; /* Para que el margin auto funcione */
-}
-
-.buscar-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Tabla */
-.tabla-container {
-  background-color: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
-  margin-top: 2rem;
-  max-height: var(--table-max-height);
+.ucah-tabla-container {
+  max-height: var(--ucah-table-max-height);
   overflow-y: auto;
   border: 1px solid #e0e3e7;
 }
 
-.clases-table {
-  width: 100%;
-  margin-bottom: 0;
-}
-
-.clases-table thead th {
+.ucah-clases-table th {
   background-color: var(--ucah-primary);
   color: white;
-  padding: 1.25rem;
-  font-weight: 600;
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
 
-.clases-table tbody td {
-  padding: 1.25rem;
-  vertical-align: middle;
-  border-top: 1px solid #e9ecef;
-}
-
-.clases-table tbody tr:hover td {
-  background-color: rgba(25, 135, 84, 0.03);
-}
-
-.fila-vacia td {
-  text-align: center;
-  color: #6c757d;
-  font-style: italic;
-  padding: 2.5rem;
-  background-color: #f8f9fa;
-}
-
-/* Footer - Modificado */
-.footer-bar {
+/* Footer */
+.ucah-footer-bar {
   background: linear-gradient(135deg, var(--ucah-primary), #122a4a);
   color: white;
   padding: 1.5rem;
   text-align: center;
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-/* Animaciones */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Corrección para el fondo negro */
-main.flex-grow-1 {
-  background-color: #f8f9fa;
-}
-
-/* Mejoras para móviles */
-@media (max-width: 768px) {
-  :root {
-    --table-max-height: 55vh;
-  }
-  
-  .clases-aprobadas-container {
-    margin: 1rem auto;
-    padding: 0 1rem;
-  }
-  
-  .header-bar {
-    padding: 0.75rem;
-  }
-  
-  .header-bar .logo {
-    height: 50px;
-  }
-  
-  .buscar-button {
-    padding: 0.75rem 1.5rem;
-    min-width: 160px;
-  }
-  
-  .clases-table thead th,
-  .clases-table tbody td {
-    padding: 0.75rem;
-    font-size: 0.9rem;
-  }
-  
-  .dni-input,
-  .info-input {
-    padding: 0.85rem 1rem;
-    height: 3rem;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  :root {
-    --table-max-height: 50vh;
-  }
-  
-  .fila-vacia td {
-    padding: 1.5rem;
-  }
-  
-  .dni-input,
-  .info-input {
-    padding: 0.75rem 0.9rem;
-    height: 2.8rem;
-    max-width: 100%; /* En móviles ocupa todo el ancho */
-  }
-  
-  .buscar-button {
-    width: 100%; /* En móviles ocupa todo el ancho */
-  }
 }
