@@ -628,7 +628,7 @@ const ICienciasComputaciónPensum: React.FC = () => {
             checked={approvedCourses.has(selectedCourse.code)}
             onChange={() => togglePending(selectedCourse)}
             disabled={loading || loadingCourseCode === selectedCourse.code}
-            className="custom-checkbox" // Aplica la clase personalizada aquí
+            className="custom-checkbox" 
           />
           {loading && loadingCourseCode === selectedCourse.code ? (
             <Spinner animation="border" size="sm" style={{ marginLeft: '10px' }} />
