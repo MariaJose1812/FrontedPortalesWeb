@@ -8,7 +8,7 @@ import ICienciasComputacionPensum from "../Pensums/ICienciasComputaciónPensum";
 import IndustrialPensum from "../Pensums/IndustrialPensum";
 import { useState } from "react";
 
-// Definir la interfaz LoginResponse
+
 interface LoginResponse {
   message: string;
   userId: string;
@@ -19,32 +19,32 @@ interface LoginResponse {
 function Login() {
   const navigate = useNavigate();
 
-  // Estado para manejar el error de login
+ 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Obtener los valores de los campos
+    
     const userId = (document.getElementById('usuario') as HTMLInputElement).value;
     const password = (document.getElementById('password') as HTMLInputElement).value;
 
     try {
-      // Hacer la solicitud a la API de inicio de sesión
+      
       const response = await axios.post<LoginResponse>('http://localhost:3010/api/User/signIn', {
         userId,
         password,
       });
 
-      // Si la autenticación es exitosa, redirigir al dashboard
+      
       if (response.status === 200) {
-        // Almacenar el token y el userId en el localStorage
+        
         localStorage.setItem('userToken', response.data.token);
-        localStorage.setItem('userId', userId);  // Guardamos el userId
+        localStorage.setItem('userId', userId);  
         navigate("/dashboard");
       }
     } catch (error: any) {
-      // Manejar el error y mostrar un mensaje bonito
+      
       console.error('Error en el inicio de sesión', error);
       setErrorMessage('Usuario o contraseña incorrectos');
     }

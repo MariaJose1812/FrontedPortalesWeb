@@ -13,6 +13,15 @@
 
 }
 
+.custom-checkbox {
+  transform: scale(1.5); 
+}
+
+.custom-checkbox {
+  transform: scale(1.5);
+  margin-right: 10px; 
+}
+
 .header h2 {
   font-size: 2.5rem;
   font-weight: bolder;

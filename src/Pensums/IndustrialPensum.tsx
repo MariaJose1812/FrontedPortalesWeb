@@ -13,7 +13,7 @@ interface Semester {
 }
 
 const IndustrialPensum: React.FC = () => {
-  // Datos de los semestres y cursos
+
   const semesters: Semester[] = [
     {
       number: 'I',

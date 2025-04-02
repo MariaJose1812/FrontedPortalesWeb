@@ -14,6 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 
+
 function Dashboard() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -62,9 +63,9 @@ function Dashboard() {
 
   const handleServiciosAcademicosClick = () => {
     if (facultadId === 'IF01002') {
-      navigate('/ICienciasComputacionPensum');
+      navigate('/ICienciasComputacionPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
     } else if (facultadId === 'IG02002') {
-      navigate('/IndustrialPensum');
+      navigate('/IndustrialPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
     }
   };
 
@@ -209,7 +210,7 @@ function Dashboard() {
   );
 }
 
-// Componente ServiceCard (sin cambios)
+
 function ServiceCard({ icon, title, color, to, onClick }: {
   icon: React.ReactNode;
   title: string;

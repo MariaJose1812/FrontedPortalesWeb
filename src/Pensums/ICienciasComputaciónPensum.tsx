@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ICienciasComputaciónPensum.css';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Spinner } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 interface Course {
   code: string;
@@ -18,71 +19,98 @@ interface Semester {
 
 const ICienciasComputaciónPensum: React.FC = () => {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
-  const [showModal, setShowModal] = useState(false);
-  const [pendingCourses, setPendingCourses] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState(false);
+  const [approvedCourses, setApprovedCourses] = useState<Set<string>>(new Set());
+  const [loadingCourseCode, setLoadingCourseCode] = useState<string | null>(null); 
+  const [showCheck, setShowCheck] = useState<boolean>(false); 
+  
+  const location = useLocation();
+  const { dni, nombre } = location.state || {};
+  
+  const togglePending = async (course: Course) => {
+    setLoading(true);
+    setLoadingCourseCode(course.code); 
+    setShowCheck(false); 
 
-  const handleClick = (course: Course) => {
-    setSelectedCourse(course);
-    setShowModal(true);
-  };
+    if (!dni) {
+      alert('No se encontró el DNI del alumno');
+      setLoading(false);
+      setLoadingCourseCode(null);
+      return;
+    }
 
-  const handleClose = () => setShowModal(false);
-
-  const togglePending = (course: Course) => {
-    setPendingCourses((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(course.code)) {
-        newSet.delete(course.code);
+    try {
+      let response;
+      if (approvedCourses.has(course.code)) {
+        // Eliminar curso aprobado
+        response = await fetch('http://localhost:3010/api/Aprobado/deleteAprobado', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id_aprobado: course.code }),
+        });
       } else {
-        newSet.add(course.code);
+        // Insertar curso aprobado
+        response = await fetch('http://localhost:3010/api/Aprobado/insertAprobado', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ alumnoId: dni, id_clase: course.code, nota_final: 100 }),
+        });
       }
-      return newSet;
-    });
+
+      if (response.ok) {
+        setApprovedCourses(prev => {
+          const newSet = new Set(prev);
+          if (approvedCourses.has(course.code)) {
+            newSet.delete(course.code); 
+          } else {
+            newSet.add(course.code); 
+          }
+          return newSet;
+        });
+        
+        setShowCheck(true); 
+      } else {
+        console.error('Error en la solicitud');
+      }
+    } catch (error) {
+      console.error('Error en la solicitud:', error);
+    } finally {
+      setLoading(false);
+      setLoadingCourseCode(null); 
+    }
   };
+
+  useEffect(() => {
+    const fetchApprovedCourses = async () => {
+      try {
+        const response = await fetch(`http://localhost:3010/api/Aprobado/getAprobado?alumnoId=${dni}`);
+        if (response.ok) {
+          const data = await response.json();
+          const approvedCourseCodes = new Set<string>(data.result.map((item: { id_clase: string }) => item.id_clase));
+          setApprovedCourses(approvedCourseCodes);
+        } else {
+          console.error('Error al obtener los cursos aprobados');
+        }
+      } catch (error) {
+        console.error('Error al hacer la solicitud:', error);
+      }
+    };
+
+    if (dni) {
+      fetchApprovedCourses();
+    }
+  }, [dni]);
 
   const semesters: Semester[] = [
     {
       number: 'I',
       courses: [
-        {
-          code: 'ES101',
-          name: 'ESPAÑOL',
-          credits: 3,
-          prerequisite: '',
-          requiredFor: ''
-        },
-        {
-          code: 'MT101',
-          name: 'MATEMÁTICAS',
-          credits: 3,
-          prerequisite: '',
-          requiredFor: ''
-        },
-        {
-          code: 'IF112',
-          name: 'INTRODUCCIÓN A LAS CIENCIAS DE LA COMPUTACIÓN',
-          credits: 3,
-          prerequisite: '',
-          requiredFor: ''
-        },
-        {
-          code: 'SC101',
-          name: 'SOCIOLOGÍA',
-          credits: 3,
-          prerequisite: '',
-          requiredFor: ''
-        },
-        {
-          code: 'FI101',
-          name: 'FILOSOFÍA',
-          credits: 3,
-          prerequisite: '',
-          requiredFor: ''
-        },
-
-
-      ]
-
+        { code: 'ES101', name: 'ESPAÑOL', credits: 3 },
+        { code: 'MT101', name: 'MATEMÁTICAS', credits: 3 },
+        { code: 'IF112', name: 'INTRODUCCIÓN A LAS CIENCIAS DE LA COMPUTACIÓN', credits: 3 },
+        { code: 'SC101', name: 'SOCIOLOGÍA', credits: 3 },
+        { code: 'FI101', name: 'FILOSOFÍA', credits: 3 },
+      ],
     },
     {
       number: 'II',
@@ -531,21 +559,19 @@ const ICienciasComputaciónPensum: React.FC = () => {
         }
       ]
     },
+
   ];
+
   return (
     <div className="ciencias-computación-container">
       <div className="header">
         <h1>PLAN DE ESTUDIOS</h1>
         <h2>Ingeniería en Ciencias de la Computación</h2>
         <div className="labels-container">
-          <label><strong>DNI:</strong></label>
-          <div className="labels-container"></div>
-          <label><strong>NOMBRE:</strong></label>
+          <label><strong>DNI:</strong> {dni}</label>
+          <label><strong>NOMBRE:</strong> {nombre}</label>
         </div>
-        
       </div>
-
-
 
       <div className="container">
         {semesters.map((semester, index) => (
@@ -556,17 +582,17 @@ const ICienciasComputaciónPensum: React.FC = () => {
                 <div
                   key={courseIndex}
                   className="card"
-                  onClick={() => handleClick(course)}
+                  onClick={() => setSelectedCourse(course)}
                   style={{ cursor: 'pointer' }}
                 >
                   <div
-                    className={`card-title ${pendingCourses.has(course.code) ? 'pending-course' : ''}`}
+                    className={`card-title ${approvedCourses.has(course.code) ? 'approved-course' : ''}`}
                     style={{
-                      backgroundColor: "#F2A900", 
-                      color: "white",
-                      fontWeight: "bold",
-                      padding: "10px",
-                      textAlign: "center"
+                      backgroundColor: approvedCourses.has(course.code) ? '#28a745' : '#F2A900',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      padding: '10px',
+                      textAlign: 'center',
                     }}
                   >
                     {course.code}
@@ -579,42 +605,51 @@ const ICienciasComputaciónPensum: React.FC = () => {
         ))}
       </div>
 
-      <Modal show={showModal} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>{selectedCourse?.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>
-            <strong>{selectedCourse?.code}</strong> | Créditos: {selectedCourse?.credits}
-          </p>
-          <hr />
-          <p><strong>REQUISITO</strong></p>
-          <p>{selectedCourse?.prerequisite || 'Ninguno'}</p>
-          <hr />
-          <p><strong>ES REQUISITO DE</strong></p>
-          <p>{selectedCourse?.requiredFor || 'Ninguno'}</p>
-          <hr />
-          {selectedCourse && (
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={pendingCourses.has(selectedCourse.code)}
-                  onChange={() => togglePending(selectedCourse)}
-                />{' '}
-                Aprobado
-              </label>
-            </div>
+      <Modal show={!!selectedCourse} onHide={() => setSelectedCourse(null)} centered>
+  <Modal.Header closeButton>
+    <Modal.Title>{selectedCourse?.name}</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <p>
+      <strong>{selectedCourse?.code}</strong> | Créditos: {selectedCourse?.credits}
+    </p>
+    <hr />
+    <p><strong>REQUISITO</strong></p>
+    <p>{selectedCourse?.prerequisite || 'Ninguno'}</p>
+    <hr />
+    <p><strong>ES REQUISITO DE</strong></p>
+    <p>{selectedCourse?.requiredFor || 'Ninguno'}</p>
+    <hr />
+    {selectedCourse && (
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={approvedCourses.has(selectedCourse.code)}
+            onChange={() => togglePending(selectedCourse)}
+            disabled={loading || loadingCourseCode === selectedCourse.code}
+            className="custom-checkbox" // Aplica la clase personalizada aquí
+          />
+          {loading && loadingCourseCode === selectedCourse.code ? (
+            <Spinner animation="border" size="sm" style={{ marginLeft: '10px' }} />
+          ) : (
+            approvedCourses.has(selectedCourse.code) ? 'Desmarcar' : 'Marcar' 
           )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  );
-};
+          {showCheck && approvedCourses.has(selectedCourse.code) && !loading && !loadingCourseCode && (
+            <span style={{ marginLeft: '10px', color: '#28a745' }}>✔️</span>
+          )}
+        </label>
+      </div>
+    )}
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={() => setSelectedCourse(null)}>
+      Cerrar
+    </Button>
+  </Modal.Footer>
+</Modal>  
+      </div>
+    );
+  }
 
 export default ICienciasComputaciónPensum;
