@@ -1,208 +1,298 @@
-/* Variables personalizadas sobre Bootstrap */
 :root {
-    --ucah-primary: hwb(210 1% 40%);
-    --ucah-secondary: #09336edb;
-    --ucah-accent: #e74c3c;
-    --glass-opacity: 0.2;
-    --glass-blur: 10px;
+  --ucah-primary: #0044a3;
+  --ucah-secondary: #0044a3;
+  --ucah-accent: #e74c3c;
+  --glass-opacity: 0.2;
+  --glass-blur: 10px;
+  --table-max-height: 65vh;
+}
+
+/* Estructura base - Modificado */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+}
+
+.d-flex.flex-column.min-vh-100 {
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Barra superior - Modificado */
+.header-bar {
+  background: linear-gradient(135deg, var(--ucah-primary), var(--ucah-secondary));
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header-bar .logo {
+  height: 80px;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+  margin-right: auto; /* Empuja todo lo demás a la derecha */
+}
+
+@media (max-width: 768px) {
+  .header-bar .logo {
+    height: 50px;
+  }
+}
+
+.header-bar .logo:hover {
+  transform: scale(1.05);
+}
+
+/* Contenedor principal - Modificado */
+.clases-aprobadas-container {
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  padding: 2rem;
+  animation: fadeInUp 0.5s ease-out;
+  box-sizing: border-box;
+}
+
+.card h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.card p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 1600px) {
+  .clases-aprobadas-container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  border: none;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: none;
+}
+
+/* Formulario - Campos más grandes */
+.busqueda-container,
+.info-container {
+  margin-bottom: 2rem; /* Más espacio entre campos */
+  text-align: center; /* Centra el contenido del contenedor */
+}
+
+.dni-label,
+.info-label {
+  font-weight: 600;
+  margin-bottom: 0.75rem; /* Más espacio debajo de las etiquetas */
+  color: var(--ucah-primary);
+  font-size: 0.9rem; /* Texto de etiqueta más pequeño */
+  display: block; /* Asegura que ocupe su propia línea */
+}
+
+.dni-input,
+.info-input {
+  border-radius: 10px; /* Bordes más redondeados */
+  padding: 1rem 1.25rem; /* Más relleno interno */
+  border: 2px solid #e0e3e7;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  font-size: 1.1rem; /* Texto más grande */
+  height: 3.5rem; /* Altura fija más grande */
+  max-width: 500px; /* Ancho máximo para el input */
+  margin: 0 auto; /* Centra el input */
+  display: block; /* Necesario para que funcione el margin auto */
+}
+
+.dni-input:focus {
+  border-color: var(--ucah-secondary);
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.1);
+  outline: none;
+}
+
+.info-input {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+}
+
+/* Botón - Tamaño normal */
+.buscar-button {
+  background: linear-gradient(135deg, var(--ucah-secondary), var(--ucah-primary));
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 2rem; /* Tamaño normal */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: auto; /* Ancho automático en lugar del 100% */
+  margin: 1.5rem auto; /* Centra el botón */
+  position: relative;
+  overflow: hidden;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1rem;
+  min-width: 200px; /* Ancho mínimo */
+  display: block; /* Para que el margin auto funcione */
+}
+
+.buscar-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Tabla */
+.tabla-container {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+  max-height: var(--table-max-height);
+  overflow-y: auto;
+  border: 1px solid #e0e3e7;
+}
+
+.clases-table {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.clases-table thead th {
+  background-color: var(--ucah-primary);
+  color: white;
+  padding: 1.25rem;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.clases-table tbody td {
+  padding: 1.25rem;
+  vertical-align: middle;
+  border-top: 1px solid #e9ecef;
+}
+
+.clases-table tbody tr:hover td {
+  background-color: rgba(25, 135, 84, 0.03);
+}
+
+.fila-vacia td {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  padding: 2.5rem;
+  background-color: #f8f9fa;
+}
+
+/* Footer - Modificado */
+.footer-bar {
+  background: linear-gradient(135deg, var(--ucah-primary), #122a4a);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Corrección para el fondo negro */
+main.flex-grow-1 {
+  background-color: #f8f9fa;
+}
+
+/* Mejoras para móviles */
+@media (max-width: 768px) {
+  :root {
+    --table-max-height: 55vh;
   }
   
-  /* Barra superior moderna */
+  .clases-aprobadas-container {
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+  
   .header-bar {
-    background: rgba(var(--bs-primary-rgb), 0.9);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1rem 0;
+    padding: 0.75rem;
   }
   
   .header-bar .logo {
-    height: 100px;
-    transition: transform 0.3s ease;
+    height: 50px;
   }
   
-  .header-bar .logo:hover {
-    transform: scale(1.05);
+  .buscar-button {
+    padding: 0.75rem 1.5rem;
+    min-width: 160px;
   }
   
-  /* Contenido principal */
-  .clases-aprobadas-container {
-    max-width: 12000px;
-    margin: 7rem auto;
-    padding: 0 1.9rem;
-  }
-  
-  /* Formulario moderno */
-  .busqueda-container,
-  .info-container {
-    margin-bottom: 1.5rem;
-    
-  }
-  
-  .dni-label,
-  .info-label {
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: var(--ucah-primary);
+  .clases-table thead th,
+  .clases-table tbody td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
   }
   
   .dni-input,
   .info-input {
-    border-radius: 0.5rem;
-    padding: 0.75rem 1rem;
-    border: 2px solid #dee2e6;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.85rem 1rem;
+    height: 3rem;
+    font-size: 1rem;
   }
-  
-  .dni-input:focus,
-  .info-input:focus {
-    border-color: var(--ucah-secondary);
-    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.1);
-    background-color: white;
-  }
-  
-  .info-input[disabled] {
-    background-color: #f8f9fa;
-  }
-  
-  /* Botón moderno */
-  .buscar-button {
-    background: linear-gradient(135deg, var(--ucah-secondary), var(--ucah-primary));
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin: 1.5rem 0;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .buscar-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .buscar-button::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -60%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    transform: rotate(30deg);
-    transition: all 0.3s ease;
-  }
-  
-  .buscar-button:hover::after {
-    left: 100%;
-  }
-  
-  /* Tabla moderna */
-  .tabla-container {
-    background-color: white;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
-    margin-top: 2rem;
-  }
-  
-  .clases-table {
-    margin-bottom: 0;
-  }
-  
-  .clases-table thead th {
-    background-color: var(--ucah-primary);
-    color: white;
-    padding: 1rem;
-    font-weight: 500;
-  }
-  
-  .clases-table tbody td {
-    padding: 1rem;
-    vertical-align: middle;
-    border-top: 1px solid #dee2e6;
-  }
-  
-  .clases-table tbody tr:last-child td {
-    border-bottom: none;
-  }
-  
-  .clases-table tbody tr:hover td {
-    background-color: rgba(var(--bs-primary-rgb), 0.03);
+}
+
+@media (max-width: 576px) {
+  :root {
+    --table-max-height: 50vh;
   }
   
   .fila-vacia td {
-    text-align: center;
-    color: #6c757d;
-    font-style: italic;
-    padding: 2rem;
-  }
-  
-  /* Barra inferior moderna */
-  .footer-bar {
-    background-color: var(--ucah-primary);
-    color: rgb(248, 247, 247);
     padding: 1.5rem;
-    text-align: center;
-    margin-top: 3rem;
-    position: relative;
   }
   
-  .footer-bar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(135deg, var(--ucah-primary), #1a2a3a);
-    z-index: -1;
+  .dni-input,
+  .info-input {
+    padding: 0.75rem 0.9rem;
+    height: 2.8rem;
+    max-width: 100%; /* En móviles ocupa todo el ancho */
   }
   
-  /* Efectos de animación */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .buscar-button {
+    width: 100%; /* En móviles ocupa todo el ancho */
   }
-  
-  .clases-aprobadas-container {
-    animation: fadeInUp 0.5s ease-out;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .header-bar {
-      padding: 0.75rem 0;
-    }
-    
-    .header-bar .logo {
-      height: 40px;
-    }
-    
-    .clases-aprobadas-container {
-      padding: 0 1rem;
-    }
-    
-    .buscar-button {
-      padding: 0.75rem;
-    }
-  }
+}
