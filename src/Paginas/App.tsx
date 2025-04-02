@@ -7,6 +7,8 @@ import ServiciosAcademicos from "./servicios-academicos";
 import ICienciasComputacionPensum from "../Pensums/ICienciasComputaciónPensum";
 import IndustrialPensum from "../Pensums/IndustrialPensum";
 import { useState } from "react";
+import Aprobadas from "./Aprobadas";
+
 
 
 interface LoginResponse {
@@ -113,6 +115,8 @@ function App() {
         <Route path="/servicios-academicos" element={<ServiciosAcademicos />} />
         <Route path="/ICienciasComputacionPensum" element={<ICienciasComputacionPensum />} />
         <Route path="/IndustrialPensum" element={<IndustrialPensum />} />
+        <Route path="/Aprobadas" element={<Aprobadas />} />
+        
       </Routes>
     </Router>
   );

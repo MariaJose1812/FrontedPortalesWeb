@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 
 
+
 function Dashboard() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -69,8 +70,14 @@ function Dashboard() {
     }
   };
 
+  
+
   if (loading) return <div className="loading-spinner">Cargando...</div>;
   if (error) return <div className="error-message">{error}</div>;
+
+  const handleAprobadasClick = () => {
+    navigate('/aprobadas', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+  };
 
   return (
     <div className="dashboard-container">
@@ -137,11 +144,11 @@ function Dashboard() {
             />
             
             <ServiceCard 
-              icon={<FaDesktop />} 
-              title="Registro Matrícula" 
-              color="green" 
-              to="#" 
-            />
+            icon={<FaDesktop />} 
+            title="Registro Matrícula" 
+            color="green" 
+            onClick={handleAprobadasClick}
+          />
           </div>
 
           {/* Segunda fila de 3 servicios */}
