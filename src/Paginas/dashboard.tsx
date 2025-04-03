@@ -62,20 +62,19 @@ function Dashboard() {
     }
   };
 
+  const handleRegistroMatriculaClick = () => {
+    if (RoleId === '1') {
+      navigate('/aprobadas', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+    } else {
+      navigate('/AprobadasAlumno', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+    }
+  };
+
   if (loading) return <div className="loading-spinner">Cargando...</div>;
   if (error) return <div className="error-message">{error}</div>;
 
-  const handleAprobadasClick = () => {
-    navigate('/aprobadas', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
-  };
-
-  const handleAprobadasAlumnoClick = () => {
-    navigate('/AprobadasAlumno', {state: { dni: user?.alumnoId, nombre: user?.nombre}});
-  };
-
   return (
     <div className="dashboard-container">
-      {/* Navbar Superior */}
       <header className="dashboard-header">
         <div className="header-content container-fluid">
           <div className="brand-container">
@@ -106,14 +105,6 @@ function Dashboard() {
         </div>
       </header>
 
-      {/* Mostrar Cargo Administrativo si RoleId es 1 */}
-      {RoleId === '1' && (
-        <div className="cargo-administrativo-label">
-          Cargo Administrativo
-        </div>
-      )}
-
-      {/* Contenido Principal */}
       <main className="dashboard-main">
         <div className="container-fluid">
           <div className="welcome-section">
@@ -128,7 +119,6 @@ function Dashboard() {
             )}
           </div>
 
-          {/* Fila de servicios */}
           <div className="services-row">
             <ServiceCard 
               icon={<FaVideo />} 
@@ -140,17 +130,16 @@ function Dashboard() {
               icon={<FaBook />} 
               title="Bibliotecas" 
               color="blue" 
-              onClick={handleAprobadasAlumnoClick} 
+              to="#" 
             />
             <ServiceCard 
               icon={<FaDesktop />} 
               title="Registro Matrícula" 
               color="green" 
-              onClick={handleAprobadasClick}
+              onClick={handleRegistroMatriculaClick} 
             />
           </div>
 
-          {/* Segunda fila de 3 servicios */}
           <div className="services-row">
             {RoleId !== '1' && (
               <ServiceCard 
@@ -176,7 +165,6 @@ function Dashboard() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="dashboard-footer">
         <div className="container-fluid">
           <p className="copyright-text">
@@ -185,7 +173,6 @@ function Dashboard() {
         </div>
       </footer>
 
-      {/* Modal de Confirmación */}
       {showModal && (
         <div className="confirmation-modal">
           <div className="modal-dialog">
@@ -223,15 +210,13 @@ function ServiceCard({ icon, title, color, to, onClick }: {
   to?: string;
   onClick?: () => void;
 }) {
-  const className = `service-card ${color}-card`;
-  
   return to ? (
-    <Link to={to} className={className}>
+    <Link to={to} className={`service-card ${color}-card`}>
       <div className="card-icon">{icon}</div>
       <h3 className="card-title">{title}</h3>
     </Link>
   ) : (
-    <button className={className} onClick={onClick}>
+    <button className={`service-card ${color}-card`} onClick={onClick}>
       <div className="card-icon">{icon}</div>
       <h3 className="card-title">{title}</h3>
     </button>

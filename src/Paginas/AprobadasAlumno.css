@@ -203,3 +203,10 @@
       margin-left: 0;
     }
   }
+
+  /* Centrar el texto de la columna 'Nombre de la Clase' */
+.alumno-clases-table th:nth-child(2), 
+.alumno-clases-table td:nth-child(2) {
+  text-align: center; 
+  padding: 10px 15px; 
+}
