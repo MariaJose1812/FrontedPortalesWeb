@@ -8,6 +8,7 @@ import ICienciasComputacionPensum from "../Pensums/ICienciasComputaciónPensum";
 import IndustrialPensum from "../Pensums/IndustrialPensum";
 import { useState } from "react";
 import Aprobadas from "./Aprobadas";
+import AprobadasAlumno from "./AprobadasAlumno";
 
 interface LoginResponse {
   message: string;
@@ -108,6 +109,7 @@ function App() {
         <Route path="/ICienciasComputacionPensum" element={<ICienciasComputacionPensum />} />
         <Route path="/IndustrialPensum" element={<IndustrialPensum />} />
         <Route path="/Aprobadas" element={<Aprobadas />} />
+        <Route path="/AprobadasAlumno" element={<AprobadasAlumno />} />
       </Routes>
     </Router>
   );

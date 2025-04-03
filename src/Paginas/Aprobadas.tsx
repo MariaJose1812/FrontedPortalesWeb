@@ -88,7 +88,7 @@ const Aprobadas = () => {
                 <table className="ucah-clases-table table">
                   <thead>
                     <tr>
-                      <th>ID Clase</th>
+                      <th>Codigo de Clase</th>
                       <th>Nombre de la Clase</th>
                     </tr>
                   </thead>

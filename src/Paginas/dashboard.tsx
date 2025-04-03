@@ -69,6 +69,10 @@ function Dashboard() {
     navigate('/aprobadas', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
   };
 
+  const handleAprobadasAlumnoClick = () => {
+    navigate('/AprobadasAlumno', {state: { dni: user?.alumnoId, nombre: user?.nombre}});
+  };
+
   return (
     <div className="dashboard-container">
       {/* Navbar Superior */}
@@ -136,7 +140,7 @@ function Dashboard() {
               icon={<FaBook />} 
               title="Bibliotecas" 
               color="blue" 
-              to="#" 
+              onClick={handleAprobadasAlumnoClick} 
             />
             <ServiceCard 
               icon={<FaDesktop />} 

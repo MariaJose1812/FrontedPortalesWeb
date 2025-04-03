@@ -1,4 +1,4 @@
-/* Variables renombradas */
+/* Variables */
 :root {
   --ucah-primary: #0044a3;
   --ucah-secondary: #0044a3;
@@ -8,39 +8,51 @@
   --ucah-table-max-height: 65vh;
 }
 
-/* Encapsulación */
+/* Estructura principal */
 .ucah-aprobadas {
   background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
-/* Barra superior */
+/* Header - Logo fijo izquierda, título centrado */
 .ucah-header-bar {
   background: linear-gradient(135deg, var(--ucah-primary), var(--ucah-secondary));
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(var(--ucah-glass-blur));
   padding: 1rem;
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
-/* Logo */
 .ucah-logo {
-  height: 80px;
-  transition: transform 0.3s ease;
+  height: 60px;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.ucah-logo:hover {
-  transform: scale(1.05);
+.ucah-header-bar h1 {
+  margin: 0;
+  color: white;
+  text-align: center;
+  width: 100%;
 }
 
-/* Contenedor principal */
+/* Contenido principal */
 .ucah-clases-aprobadas-container {
   flex: 1;
   padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* Tarjeta */
@@ -51,28 +63,98 @@
   padding: 2rem;
 }
 
-/* Inputs y etiquetas */
-.ucah-dni-label,
-.ucah-info-label {
-  font-weight: 600;
+/* Títulos - Subtítulo subrayado */
+.ucah-title {
   color: var(--ucah-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.ucah-dni-input,
-.ucah-info-input {
+.ucah-title::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--ucah-primary);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de búsqueda */
+.ucah-search-section {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ucah-busqueda-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.ucah-dni-label {
+  font-weight: 600;
+  color: var(--ucah-primary);
+  min-width: 40px;
+}
+
+.ucah-dni-input {
   border-radius: 10px;
   border: 2px solid #e0e3e7;
-  width: 100%;
-  max-width: 500px;
+  padding: 0.5rem 1rem;
+  flex-grow: 1;
 }
 
 /* Botón */
 .ucah-buscar-button {
   background: linear-gradient(135deg, var(--ucah-primary), var(--ucah-secondary));
+  border: none;
+  padding: 0.5rem 1.5rem;
   border-radius: 8px;
-  padding: 0.85rem 2rem;
   color: white;
+  font-weight: 600;
   text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Información alumno */
+.ucah-info-container {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ucah-info-label {
+  font-weight: 600;
+  color: var(--ucah-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.ucah-info-input {
+  border-radius: 10px;
+  border: 2px solid #e0e3e7;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  background-color: #f8f9fa;
 }
 
 /* Tabla */
@@ -80,17 +162,73 @@
   max-height: var(--ucah-table-max-height);
   overflow-y: auto;
   border: 1px solid #e0e3e7;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.ucah-clases-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .ucah-clases-table th {
   background-color: var(--ucah-primary);
   color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+.ucah-clases-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e0e3e7;
+}
+
+.ucah-fila-vacia td {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  padding: 2rem;
 }
 
 /* Footer */
 .ucah-footer-bar {
-  background: linear-gradient(135deg, var(--ucah-primary), #122a4a);
+  background: linear-gradient(135deg, var(--ucah-primary), var(--ucah-secondary));
   color: white;
   padding: 1.5rem;
   text-align: center;
+  margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ucah-logo {
+    height: 50px;
+    left: 15px;
+  }
+  
+  .ucah-header-bar h1 {
+    font-size: 1.25rem;
+    padding-left: 70px;
+    text-align: left;
+  }
+  
+  .ucah-title {
+    font-size: 1.25rem;
+    left: 0;
+    transform: none;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .ucah-busqueda-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .ucah-dni-input {
+    width: 100%;
+  }
 }

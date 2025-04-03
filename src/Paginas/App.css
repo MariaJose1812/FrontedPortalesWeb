@@ -8,13 +8,13 @@ html, body {
   background-color: #f8f9fa;
 }
 
-/* Barra superior */
+/* Barra superior reorganizada */
 .top-bar {
   background-color: #0044A3;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 20px;
   position: fixed;
   top: 0;
   left: 0;
@@ -22,33 +22,30 @@ html, body {
   z-index: 1000;
 }
 
-/* Ajuste del botón del menú */
+/* Logo a la izquierda */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-top-bar {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Botón de menú a la derecha */
+.menu-container {
+  display: flex;
+  align-items: center;
+}
+
 .menu-button {
   background-color: transparent;
   border: none;
   color: white;
-  font-size: 24px; /* Reducido el tamaño del icono de las tres rayas */
+  font-size: 24px;
   cursor: pointer;
-  margin-right: 0; /* Mueve el botón al lado izquierdo */
-}
-
-
-.logo-top-bar {
-  max-width: 150px; /* Ajusta el tamaño del logo pequeño */
-}
-
-.nav-item {
-  text-align: center;
-  padding: 10px;
-}
-
-.nav-item a {
-  color: white;
-  text-decoration: none;
-}
-
-.nav-item a:hover {
-  text-decoration: underline;
+  padding: 5px;
 }
 
 /* Contenedor del login */
@@ -59,88 +56,112 @@ html, body {
   height: 100vh;
   width: 100vw;
   background: linear-gradient(to right, #ffffff, #e3e6eb);
-  padding-top: 80px; /* Ajuste para la barra superior */
-  padding-bottom: 40px; /* Ajuste para la barra inferior */
-  overflow: hidden; /* Previene desbordamiento */
+  padding-top: 60px;
+  padding-bottom: 40px;
+  overflow: hidden;
 }
 
-/* Caja del formulario */
+/* Caja del formulario reorganizada */
 .login-box {
   background: white;
-  padding: 60px;
+  padding: 40px;
   border-radius: 12px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
-  text-align: center;
   width: 100%;
   max-width: 500px;
 }
 
-/* Logo grande centrado sobre el formulario */
+/* Logo grande centrado con animación de bandera mejorada */
 .logo-large {
-  max-width: 300px; /* Ajusta el tamaño del logo grande */
-  margin: 0 auto 20px; /* Centra el logo y agrega un margen inferior */
+  max-width: 300px;
+  margin: 0 auto 30px;
   display: block;
+  animation: waveFlag 8s ease-in-out infinite;
+  transform-origin: 50% 50%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-/* Grupo de input */
+@keyframes waveFlag {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  15% {
+    transform: rotate(-3deg) scale(1.01);
+  }
+  30% {
+    transform: rotate(3deg) scale(1.02);
+  }
+  45% {
+    transform: rotate(-4deg) scale(1.01);
+  }
+  60% {
+    transform: rotate(4deg) scale(1.02);
+  }
+  75% {
+    transform: rotate(-2deg) scale(1.01);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* Grupo de input con más separación */
 .input-group {
-  text-align: left;
-  margin-bottom: 1 rem;
+  margin-bottom: 25px;
+}
+
+.input-group:last-child {
+  margin-bottom: 15px;
 }
 
 .form-control {
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   font-size: 14px;
-  border: 0.1 px solid #3b3c3c;
-  border-radius: 0%;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
-.form-control:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 10px rgba(13, 110, 253, 0.2);
+/* Botón separado */
+.btn-container {
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
-/* Botón de ingreso */
 .btn-primary {
   background-color: #0044A3;
   border: none;
-  padding: 20px;
+  padding: 15px;
   font-size: 16px;
   font-weight: bold;
   width: 100%;
-  border-radius: 0px;
+  border-radius: 4px;
   color: white;
-  transition: 0.1s ease-in-out;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
   background-color: #003580;
-  box-shadow: 0 4px 10px rgba(0, 68, 163, 0.3);
 }
 
-/* Enlace de recuperación de contraseña */
+/* Enlace de recuperación */
 .forgot-password {
+  text-align: center;
   margin-top: 20px;
 }
 
 .forgot-password a {
-  font-size: 14px;
   color: #0044A3;
   text-decoration: none;
-}
-
-.forgot-password a:hover {
-  text-decoration: underline;
+  font-size: 14px;
 }
 
 /* Barra inferior */
 .bottom-bar {
   background-color: #0044A3;
-  padding: 10px;
+  padding: 15px;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -148,24 +169,66 @@ html, body {
   text-align: center;
   color: white;
   font-size: 14px;
-  z-index: 1000;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
+  .top-bar {
+    padding: 10px 15px;
+  }
+  
+  .logo-top-bar {
+    max-width: 120px;
+  }
+  
   .menu-button {
-    font-size: 20px; /* Ajuste aún más pequeño para pantallas más pequeñas */
+    font-size: 20px;
+  }
+  
+  .login-box {
+    padding: 30px 20px;
+    margin: 0 15px;
+  }
+  
+  .logo-large {
+    max-width: 200px;
+    animation: waveFlagMobile 6s ease-in-out infinite;
   }
 }
 
-
-/* Ajuste responsivo */
-@media (max-width: 300px) {
-  .login-box {
-    width: 60%;
-    padding: 40px;
+@media (max-width: 480px) {
+  .logo-top-bar {
+    max-width: 100px;
   }
+  
+  .menu-button {
+    font-size: 18px;
+  }
+  
+  .form-control {
+    padding: 12px;
+  }
+  
+  .btn-primary {
+    padding: 12px;
+  }
+}
 
-  .logo-large {
-    max-width: 150px; /* Ajusta el tamaño del logo para pantallas pequeñas */
+/* Animación para móviles */
+@keyframes waveFlagMobile {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-2deg) scale(1.01);
+  }
+  50% {
+    transform: rotate(2deg) scale(1.01);
+  }
+  75% {
+    transform: rotate(-1deg) scale(1.01);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
   }
 }
