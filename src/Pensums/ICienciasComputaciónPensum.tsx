@@ -611,13 +611,7 @@ const ICienciasComputaciónPensum: React.FC = () => {
     <p>
       <strong>{selectedCourse?.code}</strong> | Créditos: {selectedCourse?.credits}
     </p>
-    <hr />
-    <p><strong>REQUISITO</strong></p>
-    <p>{selectedCourse?.prerequisite || 'Ninguno'}</p>
-    <hr />
-    <p><strong>ES REQUISITO DE</strong></p>
-    <p>{selectedCourse?.requiredFor || 'Ninguno'}</p>
-    <hr />
+    
     {selectedCourse && (
       <div>
         <label>
