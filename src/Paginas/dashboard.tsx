@@ -10,12 +10,28 @@ function Dashboard() {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [facultadId, setFacultadId] = useState<string>("");
+  const [facultadLabel, setFacultadLabel] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const userId = localStorage.getItem('userId') || '';
   const RoleId = localStorage.getItem('RoleId');  
 
+  const facultades: { [key: string]: string } = {
+    "CE02002": "Mercadotecnia",
+    "CE03100": "Gestión Estratégica de Empresas",
+    "COP": "Coprogramáticas",
+    "CRO1001": "Clases Sello",
+    "EF010": "Enfermería",
+    "EG01001": "Estudios Generales",
+    "IDINO1001": "Diplomado Inglés",
+    "IF01002": "Ingeniería en Ciencias de la Computación",
+    "IG02002": "Ingeniería Industrial",
+    "IG04001": "Ingeniería Civil",
+    "LG01002": "Derecho",
+    "MD01102": "Doctor en Medicina y Cirugía",
+    "PS01001": "Psicología"
+  };
 
   useEffect(() => {
     const fetchAlumnoData = async () => {
@@ -23,9 +39,13 @@ function Dashboard() {
         const response = await axios.get(`http://localhost:3010/api/alumno/getAlumno`);
         const alumno = response.data.result.find((alumno: any) => alumno.alumnoId === userId);
 
+        const id = alumno.facultadId;
+        const nombreFacultad = facultades[id] || "Facultad no encontrada";
+
         if (alumno) {
           setUser(alumno);
-          setFacultadId(alumno.facultadId);
+        setFacultadId(id); 
+        setFacultadLabel(nombreFacultad); 
         } else {
           setUser(null);
         }
@@ -126,7 +146,7 @@ function Dashboard() {
             {user && RoleId !== '1' && (
               <div className="user-badge">
                 <span className="badge-item">ID: {user.alumnoId}</span>
-                <span className="badge-item">Facultad: {facultadId}</span>
+                <span className="badge-item">Facultad: {facultadLabel}</span>
               </div>
             )}
           </div>

@@ -145,7 +145,7 @@ const IndustrialPensum: React.FC = () => {
     {
       number: 'V',
       courses: [
-        { code: 'IO101', name: 'INVESTIGACIÓN DE OPERACIONES I', credits: 3 },
+        { code: 'PR407', name: 'INVESTIGACIÓN DE OPERACIONES I', credits: 3 },
         { code: 'ED101', name: 'ECUACIONES DIFERENCIALES', credits: 3 },
         { code: 'CT201', name: 'CONTABILIDAD I', credits: 3 },
         { code: 'FS302', name: 'FÍSICA II', credits: 3 },
