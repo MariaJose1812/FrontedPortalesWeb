@@ -15,7 +15,7 @@ function Dashboard() {
 
   const userId = localStorage.getItem('userId') || '';
   const RoleId = localStorage.getItem('RoleId');  
-  const User = "Administrador"; 
+
 
   useEffect(() => {
     const fetchAlumnoData = async () => {
@@ -59,7 +59,19 @@ function Dashboard() {
       navigate('/ICienciasComputacionPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
     } else if (facultadId === 'IG02002') {
       navigate('/IndustrialPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
-    }
+    } else if (facultadId === 'IG04001') {
+      navigate('/CivilPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+    }else if (facultadId === 'LG01002') {
+      navigate('/DerechoPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+    }else if (facultadId === 'CE03100') {
+      navigate('/EmpresasPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+    }else if (facultadId === 'MD01102') {
+      navigate('/MedicinaCirugiaPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+    }else if (facultadId === 'CE02002') {
+      navigate('/MercadotecniaPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+    }else if (facultadId === 'PS01001') {
+      navigate('/PsicologiaPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
+    } 
   };
 
   const handleRegistroMatriculaClick = () => {
@@ -108,7 +120,7 @@ function Dashboard() {
       <main className="dashboard-main">
         <div className="container-fluid">
           <div className="welcome-section">
-            <h1 className="welcome-title">Bienvenido, {RoleId === '1' ? User : user?.nombre || 'Estudiante'}</h1>
+            <h1 className="welcome-title">Bienvenido, {RoleId === '1' ? userId : user?.nombre || 'Estudiante'}</h1>
             <p className="welcome-subtitle">Selecciona el servicio que necesitas</p>
             
             {user && RoleId !== '1' && (
