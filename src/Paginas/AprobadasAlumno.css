@@ -7,27 +7,7 @@
     flex-direction: column;
   }
   
-  /* Header */
-  .alumno-header {
-    background-color: #0044a3;
-    padding: 15px 20px;
-    color: white;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-  
-  .alumno-logo {
-    height: 80px;
-    position: absolute;
-    left: 20px;
-  }
-  
-  .alumno-header h1 {
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
-  }
+
   
   /* Contenedor principal */
   .alumno-clases-container {

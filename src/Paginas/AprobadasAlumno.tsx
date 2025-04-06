@@ -63,14 +63,7 @@ const AprobadasAlumno = () => {
 
   return (
     <div className="alumno-aprobadas d-flex flex-column min-vh-100">
-      <header className="alumno-header">
-        <div className="container">
-          <div className="d-flex justify-content-between align-items-center">
-            <img src="logo.png" alt="Logo" className="alumno-logo" />
-            <h1 className="text-white mb-0 d-none d-md-block">Mis Clases Aprobadas</h1>
-          </div>
-        </div>
-      </header>
+      
 
       <main className="flex-grow-1 py-4">
         <div className="container alumno-clases-container">

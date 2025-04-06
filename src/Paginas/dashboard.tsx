@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaChalkboardTeacher, FaBook, FaQrcode, FaDesktop, FaChalkboard, FaVideo, FaUser, FaHome } from "react-icons/fa";
+import { FaChalkboardTeacher, FaBook, FaQrcode, FaDesktop, FaChalkboard, FaVideo } from "react-icons/fa";
 import "./dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -7,7 +7,6 @@ import axios from 'axios';
 
 function Dashboard() {
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [facultadId, setFacultadId] = useState<string>("");
   const [facultadLabel, setFacultadLabel] = useState<string>("");
@@ -67,8 +66,6 @@ function Dashboard() {
   }, [userId, RoleId]);
   
 
-  const handleLogoutClick = () => setShowModal(true);
-  const handleCancelLogout = () => setShowModal(false);
 
   const handleConfirmLogout = () => {
     localStorage.removeItem('userToken');
@@ -110,35 +107,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <header className="dashboard-header">
-        <div className="header-content container-fluid">
-          <div className="brand-container">
-            <img src="logo.png" alt="Universidad Logo" className="header-logo" />
-          </div>
-          
-          <nav className="header-nav">
-            <ul className="nav-list">
-              <li className="nav-item">
-                <Link to="#" className="nav-link">
-                  <FaHome className="nav-icon" />
-                  <span>Inicio</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="#" className="nav-link">
-                  <FaUser className="nav-icon" />
-                  <span>Perfil</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <button className="logout-btn" onClick={handleLogoutClick}>
-                  Cerrar sesión
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      
 
       <main className="dashboard-main">
         <div className="container-fluid">
@@ -208,32 +177,7 @@ function Dashboard() {
         </div>
       </footer>
 
-      {showModal && (
-        <div className="confirmation-modal">
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Confirmar cierre de sesión</h5>
-                <button type="button" className="close-btn" onClick={handleCancelLogout}>
-                  &times;
-                </button>
-              </div>
-              <div className="modal-body">
-                <p>¿Estás seguro de que deseas cerrar tu sesión?</p>
-                <small>Tendrás que iniciar sesión nuevamente para acceder.</small>
-              </div>
-              <div className="modal-footer">
-                <button className="cancel-btn" onClick={handleCancelLogout}>
-                  Cancelar
-                </button>
-                <button className="confirm-btn" onClick={handleConfirmLogout}>
-                  Cerrar sesión
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 }

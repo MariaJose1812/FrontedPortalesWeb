@@ -8,37 +8,6 @@ html, body {
   background-color: #f8f9fa;
 }
 
-/* Barra superior reorganizada */
-.top-bar {
-  background-color: #0044A3;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-/* Logo a la izquierda */
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo-top-bar {
-  max-width: 150px;
-  height: auto;
-}
-
-/* Botón de menú a la derecha */
-.menu-container {
-  display: flex;
-  align-items: center;
-}
-
 .menu-button {
   background-color: transparent;
   border: none;

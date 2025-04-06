@@ -15,6 +15,7 @@ import IndustrialPensum from "../Pensums/IndustrialPensum";
 import { useState } from "react";
 import Aprobadas from "./Aprobadas";
 import AprobadasAlumno from "./AprobadasAlumno";
+import Layout from "../Componentes/Layout";
 
 interface LoginResponse {
   message: string;
@@ -58,14 +59,14 @@ function Login() {
   return (
     <div className="login-container">
       <div className="top-bar">
+      <img src="../src/assets/logo.png" alt="Logo UNICAH" className="logo-top-bar" />
         <button className="menu-button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           &#9776;
         </button>
-        <img src="logo.png" alt="Logo UNICAH" className="logo-top-bar" />
       </div>
 
       <div className="login-box">
-        <img src="logo.png" alt="Logo Grande" className="logo-large" />
+        <img src="../src/assets/logo.png" alt="Logo Grande" className="logo-large" />
 
         {errorMessage && (
           <div className="alert alert-danger" role="alert">
@@ -110,7 +111,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+      <Route path="/" element={<Login />} />
+      <Route element={<Layout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/servicios-academicos" element={<ServiciosAcademicos />} />
         <Route path="/ICienciasComputacionPensum" element={<ICienciasComputacionPensum />} />
@@ -124,6 +126,7 @@ function App() {
         {/* Agrega aquí más rutas para otros pensums */}
         <Route path="/Aprobadas" element={<Aprobadas />} />
         <Route path="/AprobadasAlumno" element={<AprobadasAlumno />} />
+        </Route>
       </Routes>
     </Router>
   );
