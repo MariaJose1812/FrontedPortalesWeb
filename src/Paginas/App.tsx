@@ -37,6 +37,7 @@ function Login() {
       const response = await axios.post<LoginResponse>('http://localhost:3010/api/User/signIn', {
         userId,
         password,
+        RoleId: 1,
       });
 
       if (response.status === 200) {

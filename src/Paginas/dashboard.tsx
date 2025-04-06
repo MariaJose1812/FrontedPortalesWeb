@@ -34,20 +34,26 @@ function Dashboard() {
   };
 
   useEffect(() => {
+    if (RoleId === '1') {
+      setLoading(false);
+      setUser({ nombre: 'Admin' });
+      return;
+    }
+  
     const fetchAlumnoData = async () => {
       try {
         const response = await axios.get(`http://localhost:3010/api/alumno/getAlumno`);
         const alumno = response.data.result.find((alumno: any) => alumno.alumnoId === userId);
-
-        const id = alumno.facultadId;
-        const nombreFacultad = facultades[id] || "Facultad no encontrada";
-
+  
         if (alumno) {
+          const id = alumno.facultadId;
+          const nombreFacultad = facultades[id] || "Facultad no encontrada";
+  
           setUser(alumno);
-        setFacultadId(id); 
-        setFacultadLabel(nombreFacultad); 
+          setFacultadId(id); 
+          setFacultadLabel(nombreFacultad); 
         } else {
-          setUser(null);
+          setError('Alumno no encontrado');
         }
       } catch (error) {
         console.error('Error:', error);
@@ -56,13 +62,10 @@ function Dashboard() {
         setLoading(false);
       }
     };
-
-    if (userId) {
-      fetchAlumnoData();
-    } else {
-      setLoading(false);
-    }
-  }, [userId]);
+  
+    fetchAlumnoData();
+  }, [userId, RoleId]);
+  
 
   const handleLogoutClick = () => setShowModal(true);
   const handleCancelLogout = () => setShowModal(false);
