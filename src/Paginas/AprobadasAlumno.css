@@ -126,19 +126,6 @@
     padding: 20px;
   }
   
-  /* Footer */
-  .alumno-footer {
-    background-color: #0044a3;
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-    margin-top: auto;
-  }
-  
-  .alumno-footer p {
-    margin: 0;
-    font-size: 14px;
-  }
   
   /* Responsive */
   @media (max-width: 768px) {

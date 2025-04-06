@@ -8,6 +8,28 @@ html, body {
   background-color: #f8f9fa;
 }
 
+.bottom-bar {
+  background-color: #0044a3;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  margin-top: auto;
+  left: 0;
+  right: 0;
+}
+
+.bottom-bar p {
+  margin: 0;
+  font-size: 14px;
+}
+
+
+/* Botón de menú a la derecha */
+.menu-container {
+  display: flex;
+  align-items: center;
+}
+
 .menu-button {
   background-color: transparent;
   border: none;

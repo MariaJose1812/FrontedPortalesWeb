@@ -109,13 +109,7 @@ const AprobadasAlumno = () => {
         </div>
       </main>
 
-      <footer className="alumno-footer mt-auto">
-        <div className="container">
-          <p className="mb-0">
-            © {new Date().getFullYear()} Universidad Católica de Honduras. Todos los derechos reservados
-          </p>
-        </div>
-      </footer>
+
     </div>
   );
 };

@@ -140,20 +140,7 @@
     margin: 0;
 }
 
-  
-  /* Footer */
-  .dashboard-footer {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    padding: 1.5rem 0;
-    text-align: center;
-  }
-  
-  .copyright-text {
-    margin: 0;
-    font-size: 0.9rem;
-  }
-  
+
   /* Modal */
   .confirmation-modal {
     position: fixed;

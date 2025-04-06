@@ -169,15 +169,7 @@ function Dashboard() {
         </div>
       </main>
 
-      <footer className="dashboard-footer">
-        <div className="container-fluid">
-          <p className="copyright-text">
-            © {new Date().getFullYear()} Universidad. Todos los derechos reservados.
-          </p>
-        </div>
-      </footer>
 
-      
     </div>
   );
 }

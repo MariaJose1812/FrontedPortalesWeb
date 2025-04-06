@@ -13,7 +13,7 @@ const TopBar: React.FC = () => {
   const handleCancelLogout = () => setShowModal(false);
   const handleConfirmLogout = () => {
     setShowModal(false);
-    // Aquí puedes limpiar tokens o estado de sesión si usas alguno
+    
     navigate("/login");
   };
 

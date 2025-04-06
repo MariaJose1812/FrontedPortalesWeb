@@ -101,7 +101,7 @@ function Login() {
       </div>
 
       <div className="bottom-bar">
-        <p>Universidad Católica de Honduras ® 2025</p>
+        <p>® 2025 Universidad Católica de Honduras. Todos los derechos reservados</p>
       </div>
     </div>
   );

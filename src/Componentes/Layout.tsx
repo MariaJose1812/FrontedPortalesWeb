@@ -1,7 +1,7 @@
-// src/components/Layout.tsx
 import React from "react";
 import { Outlet } from "react-router-dom";
 import TopBar from "./TopBar";
+import Footer from "./Footer";
 
 const Layout: React.FC = () => {
   return (
@@ -10,6 +10,8 @@ const Layout: React.FC = () => {
       <main style={{ paddingTop: "100px" }}>
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 };
