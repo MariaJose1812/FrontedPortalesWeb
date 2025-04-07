@@ -18,9 +18,9 @@ const TopBar: React.FC = () => {
   };
 
   return (
-    <div className="top-bar">
+    <div className="Top-bar">
       <div className="logo-container">
-        <img src={logo} alt="Logo" className="logo-top-bar" />
+        <img src={logo} alt="Logo" className="logo-Top-bar" />
       </div>
 
       <div>

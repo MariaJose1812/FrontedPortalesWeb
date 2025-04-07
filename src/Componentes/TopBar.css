@@ -1,10 +1,10 @@
 
-.top-bar {
+.Top-bar {
     background-color: #0044A3;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 0px 0px;
     position: fixed;
     top: 0;
     left: 0;
@@ -15,9 +15,10 @@
   .logo-container {
     display: flex;
     align-items: center;
+    margin-left: 20px;
   }
   
-  .logo-top-bar {
+  .logo-Top-bar {
     max-width: 150px;
     height: auto;
   }
@@ -28,7 +29,6 @@
     color: var(--medium-gray, #ccc);
     font-weight: 500;
     cursor: pointer;
-    padding: 0.5rem;
     transition: color 0.2s;
   }
   

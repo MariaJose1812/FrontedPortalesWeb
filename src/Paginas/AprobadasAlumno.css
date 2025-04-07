@@ -1,7 +1,7 @@
 /* Estilos generales */
 .alumno-aprobadas {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background: linear-gradient(to right, #ffffff, #e3e6eb);
     min-height: 100vh;
     display: flex;
     flex-direction: column;

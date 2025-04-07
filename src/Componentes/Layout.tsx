@@ -7,7 +7,7 @@ const Layout: React.FC = () => {
   return (
     <div>
       <TopBar />
-      <main style={{ paddingTop: "100px" }}>
+      <main style={{ paddingTop: "80px" }}>
         <Outlet />
       </main>
 

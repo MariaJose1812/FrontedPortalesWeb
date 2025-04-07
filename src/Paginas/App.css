@@ -8,22 +8,24 @@ html, body {
   background-color: #f8f9fa;
 }
 
-.bottom-bar {
-  background-color: #0044a3;
-  color: white;
-  padding: 15px 0;
-  text-align: center;
-  margin-top: auto;
+.top-bar {
+  background-color: #0044A3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-}
-
-.bottom-bar p {
-  margin: 0;
-  font-size: 14px;
+  z-index: 1000;
 }
 
 
+.logo-top-bar {
+  max-width: 150px;
+  height: auto;
+}
 /* Botón de menú a la derecha */
 .menu-container {
   display: flex;
@@ -36,7 +38,7 @@ html, body {
   color: white;
   font-size: 24px;
   cursor: pointer;
-  padding: 5px;
+
 }
 
 /* Contenedor del login */
@@ -151,16 +153,22 @@ html, body {
 
 /* Barra inferior */
 .bottom-bar {
-  background-color: #0044A3;
-  padding: 15px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
+  background-color: #0044a3;
   color: white;
+  padding: 15px 0;
+  text-align: center;
+  position: fixed;
+  margin-top: auto;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.bottom-bar p {
+  margin: 0;
   font-size: 14px;
 }
+
 
 /* Responsive */
 @media (max-width: 768px) {
