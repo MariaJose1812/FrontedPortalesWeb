@@ -14,7 +14,7 @@ const TopBar: React.FC = () => {
   const handleConfirmLogout = () => {
     setShowModal(false);
     
-    navigate("/login");
+    navigate("/");
   };
 
   return (
