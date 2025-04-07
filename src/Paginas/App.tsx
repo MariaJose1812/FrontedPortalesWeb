@@ -6,12 +6,12 @@ import Dashboard from "./dashboard";
 import ServiciosAcademicos from "./servicios-academicos";
 import ICienciasComputacionPensum from "../Pensums/ICienciasComputaciónPensum";
 import IndustrialPensum from "../Pensums/IndustrialPensum";
-// import CivilPensum from "../Pensums/CivilPensum";
-// import DerechoPensum from "../Pensums/DerechoPensum";
-// import EmpresasPensum from "../Pensums/EmpresasPensum";
-// import MedicinaCirugiaPensum from "../Pensums/MedicinaCirugiaPensum";
-// import MercadotecniaPensum from "../Pensums/MercadotecniaPensum";
-// import PsicologiaPensum from "../Pensums/PsicologiaPensum";
+import CivilPensum from "../Pensums/CivilPensum";
+import DerechoPensum from "../Pensums/DerechoPensum";
+import EmpresasPensum from "../Pensums/EmpresasPensum";
+import MedicinaCirugiaPensum from "../Pensums/MedicinaCirugiaPensum";
+import MercadotecniaPensum from "../Pensums/MercadotecniaPensum";
+import PsicologiaPensum from "../Pensums/PsicologiaPensum";
 import { useState } from "react";
 import Aprobadas from "./Aprobadas";
 import AprobadasAlumno from "./AprobadasAlumno";
@@ -117,13 +117,12 @@ function App() {
         <Route path="/servicios-academicos" element={<ServiciosAcademicos />} />
         <Route path="/ICienciasComputacionPensum" element={<ICienciasComputacionPensum />} />
         <Route path="/IndustrialPensum" element={<IndustrialPensum />} />
-        {/* <Route path="/CivilPensum" element={<CivilPensum />} />
+        <Route path="/CivilPensum" element={<CivilPensum />} />
         <Route path="/DerechoPensum" element={<DerechoPensum />} />
         <Route path="/EmpresasPensum" element={<EmpresasPensum />} />
         <Route path="/MedicinaCirugiaPensum" element={<MedicinaCirugiaPensum />} />
         <Route path="/MercadotecniaPensum" element={<MercadotecniaPensum />} />
-        <Route path="/PsicologiaPensum" element={<PsicologiaPensum />} /> */}
-        {/* Agrega aquí más rutas para otros pensums */}
+        <Route path="/PsicologiaPensum" element={<PsicologiaPensum />} /> 
         <Route path="/Aprobadas" element={<Aprobadas />} />
         <Route path="/AprobadasAlumno" element={<AprobadasAlumno />} />
         </Route>
