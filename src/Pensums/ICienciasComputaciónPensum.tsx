@@ -199,7 +199,7 @@ const ICienciasComputaciónPensum: React.FC = () => {
       number: 'IV',
       courses: [
         {
-          code: 'LG240',
+          code: 'AD302',
           name: 'MÉTODOS Y TÉCNICAS DE INVESTIGACIÓN',
           credits: 3,
           prerequisite: ''
@@ -238,7 +238,7 @@ const ICienciasComputaciónPensum: React.FC = () => {
       number: 'V',
       courses: [
         {
-          code: 'IF207',
+          code: 'IF322',
           name: 'BASE DE DATOS I',
           credits: 3,
           prerequisite: ''
@@ -550,7 +550,7 @@ const ICienciasComputaciónPensum: React.FC = () => {
       number: 'XIII',
       courses: [
         {
-          code: '',
+          code: 'IF400',
           name: 'PRÁCTICA PROFESIONAL SUPERVISADA',
           credits: 3,
           prerequisite: ''
