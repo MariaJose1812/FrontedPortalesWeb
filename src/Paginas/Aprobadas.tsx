@@ -58,7 +58,7 @@ const Aprobadas = () => {
     } catch (error) {
       if (error instanceof Error) {
         console.error('Error en la búsqueda:', error.message);
-        setError(`Error: ${error.message}`);
+        setError(`Error: ${"alumno no encontrado"}`);
       } else {
         console.error('Error desconocido:', error);
         setError('Error desconocido en la búsqueda');
