@@ -42,14 +42,14 @@ const PsicologiaPensum: React.FC = () => {
     try {
       let response;
       if (approvedCourses.has(course.code)) {
-        // Eliminar curso aprobado
+       
         response = await fetch('http://localhost:3010/api/Aprobado/deleteAprobado', {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id_aprobado: course.code }),
         });
       } else {
-        // Insertar curso aprobado
+      
         response = await fetch('http://localhost:3010/api/Aprobado/insertAprobado', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

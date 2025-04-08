@@ -15,13 +15,17 @@ body, html {
 }
 
 .header h1 {
-  font-size: 3.0rem;
-  font-weight: bold;
-  color: #032A5A;
-  text-align: center;
+  font-size: 3rem; 
+  font-weight: 750; 
+  color: #032A5A; 
   margin-top: 35px;
-
+  margin-bottom: 10px;
+  text-align: center;
+  letter-spacing: 1px; 
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); 
+  line-height: 1.2;
 }
+
 
 .custom-checkbox {
   transform: scale(1.5); 

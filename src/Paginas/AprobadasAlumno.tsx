@@ -4,7 +4,7 @@ import axios from 'axios';
 import './AprobadasAlumno.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Definir los tipos de datos
+
 interface Clase {
   id_clase: number;
   nombre_clase: string;

@@ -1,4 +1,3 @@
-/* Configuración general */
 html, body {
   margin: 0;
   padding: 0;
@@ -26,7 +25,7 @@ html, body {
   max-width: 150px;
   height: auto;
 }
-/* Botón de menú a la derecha */
+
 .menu-container {
   display: flex;
   align-items: center;
@@ -41,7 +40,7 @@ html, body {
 
 }
 
-/* Contenedor del login */
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -54,7 +53,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Caja del formulario reorganizada */
+
 .login-box {
   background: white;
   padding: 40px;
@@ -64,7 +63,7 @@ html, body {
   max-width: 500px;
 }
 
-/* Logo grande centrado con animación de bandera mejorada */
+
 .logo-large {
   max-width: 300px;
   margin: 0 auto 30px;
@@ -98,7 +97,7 @@ html, body {
   }
 }
 
-/* Grupo de input con más separación */
+
 .input-group {
   margin-bottom: 25px;
 }
@@ -116,7 +115,7 @@ html, body {
   margin-bottom: 10px;
 }
 
-/* Botón separado */
+
 .btn-container {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -139,7 +138,7 @@ html, body {
   background-color: #003580;
 }
 
-/* Enlace de recuperación */
+
 .forgot-password {
   text-align: center;
   margin-top: 20px;
@@ -151,7 +150,7 @@ html, body {
   font-size: 14px;
 }
 
-/* Barra inferior */
+
 .bottom-bar {
   background-color: #0044a3;
   color: white;
@@ -170,7 +169,6 @@ html, body {
 }
 
 
-/* Responsive */
 @media (max-width: 768px) {
   .top-bar {
     padding: 10px 15px;
@@ -213,7 +211,7 @@ html, body {
   }
 }
 
-/* Animación para móviles */
+
 @keyframes waveFlagMobile {
   0% {
     transform: rotate(0deg) scale(1);

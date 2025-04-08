@@ -1,4 +1,3 @@
-/* Estilos generales */
 .alumno-aprobadas {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #ffffff, #e3e6eb);
@@ -8,8 +7,6 @@
   }
   
 
-  
-  /* Contenedor principal */
   .alumno-clases-container {
     max-width: 800px;
     margin: 20px auto;
@@ -23,16 +20,16 @@
   
   .alumno-card-body {
     padding: 25px;
-    text-align: center; /* Centrado general del contenido */
+    text-align: center;
   }
   
-  /* Subtítulo centrado y subrayado */
+
   .alumno-title {
     color: #0044a3;
     font-size: 24px;
     margin-bottom: 20px;
     font-weight: bold;
-    display: inline-block; /* Para que el subrayado solo ocupe el ancho del texto */
+    display: inline-block; 
     position: relative;
     padding-bottom: 10px;
   }
@@ -48,7 +45,7 @@
     border-radius: 2px;
   }
   
-  /* Sección de búsqueda */
+
   .alumno-busqueda-section {
     margin-bottom: 25px;
     display: flex;
@@ -71,7 +68,7 @@
     min-width: 30px;
   }
   
-  /* Campos de solo lectura */
+  
   .alumno-dni-value, .alumno-nombre-value {
     padding: 8px 12px;
     border: 1px solid #ccc;
@@ -96,7 +93,7 @@
     margin-left: 5px;
   }
   
-  /* Tabla */
+
   .alumno-tabla-container {
     margin-top: 20px;
   }
@@ -127,7 +124,7 @@
   }
   
   
-  /* Responsive */
+
   @media (max-width: 768px) {
     .alumno-header {
       flex-direction: column;
@@ -171,7 +168,7 @@
     }
   }
 
-  /* Centrar el texto de la columna 'Nombre de la Clase' */
+
 .alumno-clases-table th:nth-child(2), 
 .alumno-clases-table td:nth-child(2) {
   text-align: center; 

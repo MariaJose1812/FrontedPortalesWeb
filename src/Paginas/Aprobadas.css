@@ -1,4 +1,3 @@
-/* Variables */
 :root {
   --ucah-primary: #0044a3;
   --ucah-secondary: #0044a3;
@@ -9,7 +8,6 @@
 }
 
 
-/* Estructura principal */
 .ucah-aprobadas {
   background-color: #f8f9fa;
   display: flex;
@@ -18,7 +16,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* Header - Logo fijo izquierda, título centrado */
+
 .ucah-header-bar {
   background: linear-gradient(135deg, var(--ucah-primary), var(--ucah-secondary));
   backdrop-filter: blur(var(--ucah-glass-blur));
@@ -47,7 +45,7 @@
   width: 100%;
 }
 
-/* Contenido principal */
+
 .ucah-clases-aprobadas-container {
   flex: 1;
   padding: 2rem;
@@ -56,7 +54,7 @@
   width: 100%;
 }
 
-/* Tarjeta */
+
 .ucah-card {
   border-radius: 16px;
   background-color: white;
@@ -64,7 +62,7 @@
   padding: 2rem;
 }
 
-/* Títulos - Subtítulo subrayado */
+
 .ucah-title {
   color: var(--ucah-primary);
   font-size: 1.5rem;
@@ -90,7 +88,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Sección de búsqueda */
+
 .ucah-search-section {
   margin-bottom: 2rem;
   display: flex;
@@ -120,7 +118,6 @@
   flex-grow: 1;
 }
 
-/* Botón */
 .ucah-buscar-button {
   background: linear-gradient(135deg, var(--ucah-primary), var(--ucah-secondary));
   border: none;
@@ -134,7 +131,7 @@
   max-width: 600px;
 }
 
-/* Información alumno */
+
 .ucah-info-container {
   margin-bottom: 1rem;
   width: 100%;
@@ -158,7 +155,7 @@
   background-color: #f8f9fa;
 }
 
-/* Tabla */
+
 .ucah-tabla-container {
   max-height: var(--ucah-table-max-height);
   overflow-y: auto;
@@ -194,7 +191,7 @@
   padding: 2rem;
 }
 
-/* Footer */
+
 .ucah-footer-bar {
   background: linear-gradient(135deg, var(--ucah-primary), var(--ucah-secondary));
   color: white;
@@ -203,7 +200,7 @@
   margin-top: auto;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .ucah-logo {
     height: 50px;

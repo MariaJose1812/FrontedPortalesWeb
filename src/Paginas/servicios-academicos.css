@@ -1,4 +1,4 @@
-/* Estilos base optimizados para pantalla completa */
+
 * {
     margin: 0;
     padding: 0;
@@ -41,7 +41,7 @@
     font-weight: 400;
   }
   
-  /* Estructura de periodos - pantalla completa */
+ 
   .periods-grid {
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
     border-bottom: 2px solid #eaeaea;
   }
   
-  /* Grid de asignaturas optimizado */
+
   .subjects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -98,7 +98,7 @@
     text-align: center;
   }
   
-  /* Responsive Design para pantalla completa */
+  
   @media (max-width: 1200px) {
     .subjects-grid {
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));

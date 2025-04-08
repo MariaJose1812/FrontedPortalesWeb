@@ -1,5 +1,4 @@
 :root {
-  /* Colores principales */
   --primary-blue: #0044A3;
   --hover-blue: #001a80;
   --primary-green: #39b45a;
@@ -11,17 +10,17 @@
   --white: #ffffff;
   --black: #212529;
 
-  /* Sombras */
+ 
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 
-  /* Bordes */
+
   --border-radius: 8px;
   --border-radius-sm: 4px;
 }
 
-/* Estilos base */
+
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -38,7 +37,6 @@
   gap: 1rem;
 }
 
-/* Contenido principal */
 .dashboard-main {
   flex: 1;
   padding: 2rem 0;
@@ -73,7 +71,6 @@
   margin-top: 1rem;
 }
 
-/* Responsive ajuste badge */
 @media (max-width: 600px) {
   .user-badge {
     flex-direction: column;
@@ -89,7 +86,7 @@
   color: var(--dark-gray);
 }
 
-/* Filas de servicios */
+
 .services-row {
   display: flex;
   justify-content: center;
@@ -149,7 +146,7 @@
   margin: 0;
 }
 
-/* Modal */
+
 .confirmation-modal {
   position: fixed;
   top: 0;
@@ -221,7 +218,6 @@
   border-top: 1px solid var(--medium-gray);
 }
 
-/* Botones modal */
 .cancel-btn, .confirm-btn {
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius-sm);
@@ -240,7 +236,6 @@
   color: var(--white);
 }
 
-/* Estados */
 .loading-spinner, .error-message {
   display: flex;
   justify-content: center;
@@ -253,7 +248,7 @@
   color: #d32f2f;
 }
 
-/* Responsive */
+
 @media (max-width: 900px) {
   .service-card {
     width: calc(50% - 1rem);

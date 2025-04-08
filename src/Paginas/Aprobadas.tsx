@@ -8,8 +8,8 @@ const Aprobadas = () => {
   const [nombre, setNombre] = useState('');
   const [facultad, setFacultad] = useState('');
   const [error, setError] = useState('');
-  const [clasesAprobadas, setClasesAprobadas] = useState<any[]>([]); // Aquí guardamos las clases aprobadas
-  const [clases, setClases] = useState<any[]>([]); // Aquí guardamos todas las clases
+  const [clasesAprobadas, setClasesAprobadas] = useState<any[]>([]); 
+  const [clases, setClases] = useState<any[]>([]); 
 
   const facultades: { [key: string]: string } = {
     "CE02002": "Mercadotecnia",
