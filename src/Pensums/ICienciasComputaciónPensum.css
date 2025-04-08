@@ -1,5 +1,13 @@
+body, html {
+  background-color: #f5f6fa !important;
+  margin: 0;
+  padding: 0;
+}
+
+
 .ciencias-computación-container {
-  background: linear-gradient(135deg, #D1D1D1 0%, #D1D1D1 30%, #032A5A 30%, #032A5A 60%, #C0932D 60%, #C0932D 100%);
+  background: linear-gradient(to right, #ffffff, #e3e6eb);
+  background-color: #e3e6eb;
   min-height: 100vh;
   padding: 20px;
   text-align: center;
@@ -10,6 +18,8 @@
   font-size: 3.0rem;
   font-weight: bold;
   color: #032A5A;
+  text-align: center;
+  margin-top: 35px;
 
 }
 
@@ -27,6 +37,7 @@
   font-weight: bolder;
   color: #30619e;
   margin-bottom: 30px;
+  text-align: center;
 }
 .labels-container {
   display: flex;

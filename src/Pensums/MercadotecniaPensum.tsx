@@ -274,41 +274,35 @@ const MercadotecniaPensum: React.FC = () => {
       </div>
 
       <Modal show={!!selectedCourse} onHide={() => setSelectedCourse(null)} centered>
-  <Modal.Header closeButton>
-    <Modal.Title>{selectedCourse?.name}</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    <p>
-      <strong>{selectedCourse?.code}</strong> | Créditos: {selectedCourse?.credits}
-    </p>
-    <hr />
-    <p><strong>REQUISITO</strong></p>
-    <p>{selectedCourse?.prerequisite || 'Ninguno'}</p>
-    <hr />
-    <p><strong>ES REQUISITO DE</strong></p>
-    <p>{selectedCourse?.requiredFor || 'Ninguno'}</p>
-    <hr />
-    {selectedCourse && (
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={approvedCourses.has(selectedCourse.code)}
-            onChange={() => togglePending(selectedCourse)}
-            disabled={loading || loadingCourseCode === selectedCourse.code}
-            className="custom-checkbox" 
-          />
-          {loading && loadingCourseCode === selectedCourse.code ? (
-            <Spinner animation="border" size="sm" style={{ marginLeft: '10px' }} />
-          ) : (
-            approvedCourses.has(selectedCourse.code) ? 'Desmarcar' : 'Marcar' 
+        <Modal.Header closeButton>
+          <Modal.Title>{selectedCourse?.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            <strong>{selectedCourse?.code}</strong> | Créditos: {selectedCourse?.credits}
+          </p>
+          
+          {selectedCourse && (
+            <div>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={approvedCourses.has(selectedCourse.code)}
+                  onChange={() => togglePending(selectedCourse)}
+                  disabled={loading || loadingCourseCode === selectedCourse.code}
+                  className="custom-checkbox" 
+                />
+                {loading && loadingCourseCode === selectedCourse.code ? (
+                  <Spinner animation="border" size="sm" style={{ marginLeft: '10px' }} />
+                ) : (
+                  approvedCourses.has(selectedCourse.code) ? 'Desmarcar' : 'Marcar' 
+                )}
+                {showCheck && approvedCourses.has(selectedCourse.code) && !loading && !loadingCourseCode && (
+                  <span style={{ marginLeft: '10px', color: '#28a745' }}>✔️</span>
+                )}
+              </label>
+            </div>
           )}
-          {showCheck && approvedCourses.has(selectedCourse.code) && !loading && !loadingCourseCode && (
-            <span style={{ marginLeft: '10px', color: '#28a745' }}>✔️</span>
-          )}
-        </label>
-      </div>
-    )}
   </Modal.Body>
   <Modal.Footer>
     <Button variant="secondary" onClick={() => setSelectedCourse(null)}>

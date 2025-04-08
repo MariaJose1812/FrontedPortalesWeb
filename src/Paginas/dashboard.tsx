@@ -67,13 +67,6 @@ function Dashboard() {
   
 
 
-  const handleConfirmLogout = () => {
-    localStorage.removeItem('userToken');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('RoleId');
-    navigate('/');
-  };
-
   const handleServiciosAcademicosClick = () => {
     if (facultadId === 'IF01002') {
       navigate('/ICienciasComputacionPensum', { state: { dni: user?.alumnoId, nombre: user?.nombre } });
